@@ -10,11 +10,14 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//Modals
+import { CreateRowPage } from './modals/create-row/create-row.page';
+import { CreateRowPageModule } from './modals/create-row/create-row.module';
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule],
+  entryComponents: [CreateRowPage],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, CreateRowPageModule],
   providers: [
     StatusBar,
     SplashScreen,

@@ -1,0 +1,165 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="end">
+        <ion-button color="light" (click)="closeModal()">
+            <ion-icon name="close"></ion-icon>
+          </ion-button>
+    </ion-buttons>
+    <ion-title >Choose layout</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row >
+      <ion-col>
+        <ion-card (click)="setLayout([12])">
+          <div class="spanContainer"> <span>1 col
+          </span></div>
+          <ion-grid>
+            <ion-row class="rowContainer">
+              <ion-col >
+                <div class="colContainer"></div>
+              </ion-col>
+            </ion-row>
+            </ion-grid>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click)="setLayout([6, 6])">
+          <div class="spanContainer"> <span>2 cols
+          </span></div>
+          <ion-grid>
+            <ion-row class="rowContainer">
+              <ion-col>
+                <div class="colContainer"></div>
+              </ion-col>
+              <ion-col>
+                <div class="colContainer"></div>
+              </ion-col>
+            </ion-row>
+            </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row >
+      <ion-col>
+        <ion-card (click)="setLayout([4, 8])">
+          <div class="spanContainer"> <span>2 cols
+          </span></div>
+          <ion-grid>
+            <ion-row class="rowContainer">
+              <ion-col size="4" >
+                <div class="colContainer" ></div>
+              </ion-col>
+              <ion-col size="8">
+                <div class="colContainer"></div>
+              </ion-col>
+            </ion-row>
+            </ion-grid>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click)="setLayout([8, 4])">
+          <div class="spanContainer"> <span>2 cols
+          </span></div>
+          <ion-grid>
+            <ion-row class="rowContainer">
+              <ion-col size="8" >
+                <div class="colContainer"></div>
+              </ion-col>
+              <ion-col size="4">
+                <div class="colContainer"></div>
+              </ion-col>
+            </ion-row>
+            </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row >
+      <ion-col>
+        <ion-card (click)="setLayout([4, 4, 4])">
+          <div class="spanContainer"> <span>3 cols
+          </span></div>
+          <ion-grid>
+            <ion-row class="rowContainer">
+              <ion-col size="4" >
+                <div class="colContainer" ></div>
+              </ion-col>
+              <ion-col size="4">
+                <div class="colContainer"></div>
+              </ion-col>
+              <ion-col size="4">
+                <div class="colContainer"></div>
+              </ion-col>
+            </ion-row>
+            </ion-grid>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click)="setLayout([3, 6, 3])">
+          <div class="spanContainer"> <span>3 cols
+          </span></div>
+          <ion-grid>
+            <ion-row class="rowContainer">
+              <ion-col size="3" >
+                <div class="colContainer"></div>
+              </ion-col>
+              <ion-col size="6">
+                <div class="colContainer"></div>
+              </ion-col>
+              <ion-col size="3">
+                <div class="colContainer"></div>
+              </ion-col>
+            </ion-row>
+            </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row >
+      <ion-col>
+        <ion-card (click)="setLayout([2, 8, 2])">
+          <div class="spanContainer"> <span>3 cols
+          </span></div>
+          <ion-grid>
+            <ion-row class="rowContainer">
+              <ion-col size="2" >
+                <div class="colContainer"></div>
+              </ion-col>
+              <ion-col size="8">
+                <div class="colContainer"></div>
+              </ion-col>
+              <ion-col size="2">
+                <div class="colContainer"></div>
+              </ion-col>
+            </ion-row>
+            </ion-grid>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click)="setLayout([3, 3, 3, 3])">
+          <div class="spanContainer"> <span>4 cols
+          </span></div>
+          <ion-grid>
+            <ion-row class="rowContainer">
+              <ion-col size="3" >
+                <div class="colContainer" ></div>
+              </ion-col>
+              <ion-col size="3">
+                <div class="colContainer"></div>
+              </ion-col>
+              <ion-col size="3">
+                <div class="colContainer"></div>
+              </ion-col>
+              <ion-col size="3">
+                <div class="colContainer"></div>
+              </ion-col>
+            </ion-row>
+            </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    </ion-grid>
+</ion-content>

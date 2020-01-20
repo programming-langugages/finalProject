@@ -8,6 +8,10 @@ const routes: Routes = [
     path: 'create-page',
     loadChildren: () => import('./pages/create-page/create-page.module').then( m => m.CreatePagePageModule)
   },
+  {
+    path: 'create-row',
+    loadChildren: () => import('./modals/create-row/create-row.module').then( m => m.CreateRowPageModule)
+  },
 ];
 
 @NgModule({
