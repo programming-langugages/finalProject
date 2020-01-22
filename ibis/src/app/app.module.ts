@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateRowPage } from './modals/create-row/create-row.page';
 import { CreateRowPageModule } from './modals/create-row/create-row.module';
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [CreateRowPage],

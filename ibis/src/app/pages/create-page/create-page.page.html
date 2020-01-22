@@ -35,10 +35,10 @@
     </ion-row>
   </ion-grid>
 
-  <mat-toolbar>  
+  <mat-toolbar>
     <mat-toolbar-row>
       <span>
-        <ion-input clearInput value="New Page"></ion-input></span>
+        <ion-input clearInput [(ngModel)]="pageName"></ion-input></span>
       <!-- Icons -->
       <div>
         <ion-button color="danger" (click)="deleteRows()">
@@ -50,7 +50,7 @@
           Add row
         </ion-button>
       </div>
-     
+
     </mat-toolbar-row>
   </mat-toolbar>
   <ion-grid>
@@ -61,7 +61,7 @@
           <ion-icon slot="icon-only" name="close"></ion-icon>
         </ion-button>
       </div>
-     
+
       <ion-col class="colContainer" *ngFor="let col of row.cols" size="{{col}}">
         <ion-item class="itemContainer">
           <ion-textarea rows="5" placeholder="Enter your code here..."></ion-textarea>
@@ -69,9 +69,9 @@
       </ion-col>
     </ion-row>
     </ion-grid>
-  
+
 
     <div class="generateContainer" *ngIf="rows.length > 0">
-      <a (click)="generatePage()" class="animatedButton"><span>Generate page</span></a>   
+      <a (click)="generatePage()" class="animatedButton"><span>Generate page</span></a>
   </div>
 </ion-content>
