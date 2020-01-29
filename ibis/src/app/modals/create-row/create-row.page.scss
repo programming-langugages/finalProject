@@ -24,3 +24,13 @@ ion-card{
     cursor: pointer;
 }
 
+
+
+@media (max-width: 768px){
+    .colContainer{
+        margin: 0;
+    }
+    .rowContainer{
+        margin: 0;
+    }
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, MenuController } from '@ionic/angular';
 import { CreateRowPage } from 'src/app/modals/create-row/create-row.page';
 
 @Component({
@@ -12,7 +12,8 @@ export class CreatePagePage implements OnInit {
   pageName: any = "New Page"
 
   constructor(
-    public modalController: ModalController
+    public modalController: ModalController,
+    public menuCtrl: MenuController
   ) {
 
    }
@@ -24,6 +25,10 @@ export class CreatePagePage implements OnInit {
 
   deleteRows(){
     this.rows = []
+  }
+
+  openMenu() {
+    this.menuCtrl.open();
   }
 
   removeRow(row){
@@ -40,7 +45,7 @@ async presentCreateRowModal(){
   modal.onDidDismiss()
       .then((layout) => {
         var row = {
-          name: 'New Row',
+          name: 'New row',
           cols: layout.data
         }
         console.log(row)
@@ -58,14 +63,32 @@ generatePage(){
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     </head>
     <body>
+      <div class="container">
   `
-  var body = `
-      <h1>Nicolas maricon hijoputa</h1>
+  var body = ''
+  for(let row of this.rows){
+    body += `
+        <!--` + row.name + `-->
+        <div class="row">
+    `
+    for(let col of row.cols){
+      body += `
+          <div class="col-`+ col.size +`">
+            `+ col.content + `
+          </div>
+      `
+    }
+    body +=`
+        </div>
+    `
+  }
+  var end_body = `
+      </div>
     </body>
   </html>
   `
 
-  var page = header + body
+  var page = header + body + end_body
 console.log(page)
   //1this.download(page, this.pageName + '.html', 'text/plain');
 }
@@ -80,13 +103,6 @@ download(strData, strFileName, strMimeType) {
 
     //build download link:
     a.href = "data:" + strMimeType + "charset=utf-8," + escape(strData);
-
-
-    if (window.MSBlobBuilder) { // IE10
-        var bb = new MSBlobBuilder();
-        bb.append(strData);
-        return navigator.msSaveBlob(bb, strFileName);
-    } /* end if(window.MSBlobBuilder) */
 
 
 

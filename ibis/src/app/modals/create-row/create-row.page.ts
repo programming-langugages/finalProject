@@ -18,7 +18,14 @@ export class CreateRowPage implements OnInit {
     this.modalController.dismiss();
   }
 
-  setLayout(layout){
+  setLayout(sizes){
+    var layout = []
+    for(let size of sizes){
+      layout.push({
+        size : size,
+        content: '<p>Nicolás maricon ijoputa</p>'
+      })
+    }
     this.modalController.dismiss(layout);
   }
 }

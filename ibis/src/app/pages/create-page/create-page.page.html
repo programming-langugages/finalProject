@@ -21,7 +21,7 @@
           <ion-toolbar>
             <ion-row class="ion-align-items-center">
               <ion-col size="10" size-md="2" size-xs="6">
-                <a href="/"><img class="mobileLogo" src="/assets/icon/logo.svg" alt="mision colegio logo" /></a>
+                <a href="/"  class="logoText">Ibis CMS</a>
               </ion-col>
               <ion-col size="2" size-md="10" size-xs="6" class="ion-text-end">
                 <ion-button (click)="openMenu()" color="dark" fill="clear">
@@ -43,26 +43,26 @@
       <div>
         <ion-button color="danger" (click)="deleteRows()">
           <ion-icon slot="start" name="remove"></ion-icon>
-          Delete rows
+          <span class="hide-mobile">Delete rows</span>
         </ion-button>
         <ion-button (click)="presentCreateRowModal()">
           <ion-icon slot="start" name="add"></ion-icon>
-          Add row
+          <span class="hide-mobile">Add row</span>
         </ion-button>
       </div>
 
     </mat-toolbar-row>
   </mat-toolbar>
   <ion-grid>
-    <ion-row class="rowContainer" *ngFor="let row of rows">
+    <ion-row class="rowContainer" *ngFor="let row of rows;let i = index">
       <div class="toolsContainer">
-        <ion-input clearInput value="New Row"></ion-input>
+        <ion-input clearInput name="row{{i}}" [(ngModel)]="row.name"></ion-input>
         <ion-button (click)="removeRow(row)" fill="clear">
           <ion-icon slot="icon-only" name="close"></ion-icon>
         </ion-button>
       </div>
 
-      <ion-col class="colContainer" *ngFor="let col of row.cols" size="{{col}}">
+      <ion-col class="colContainer" *ngFor="let col of row.cols" size="{{col.size}}">
         <ion-item class="itemContainer">
           <ion-textarea rows="5" placeholder="Enter your code here..."></ion-textarea>
         </ion-item>
@@ -72,6 +72,8 @@
 
 
     <div class="generateContainer" *ngIf="rows.length > 0">
+      <a (click)="savePage()" class="animatedButton"><span>Save page</span></a>
       <a (click)="generatePage()" class="animatedButton"><span>Generate page</span></a>
   </div>
+
 </ion-content>
