@@ -5,9 +5,23 @@ grammar einfach;
  */
 
 CREATE: 'create';
-TK_DOS_PUNTOS: ':';
 
+COPY: 'copy';
+H1: 'h1';
+HTML: 'html' | 'HTML';
+INSERT: 'insert';
+FROM: 'from';
+HERO: 'hero';
+FOOTER: 'footer';
+HEADER: 'header';
+COLOR: 'color';
+CSS: 'css';
+JS: 'js';
+IMAGE: 'image';
+URL: 'url';
+SIZE: 'size';
 STRING: [a-zA-Z0-9]+;
+TK_DOS_PUNTOS: ':';
 TK_SUMA_ASIG: '+:=';
 TK_MENOS_ASIG: '-:=';
 TK_ASIG: ':=';
@@ -38,15 +52,9 @@ TK_PORCENTAJE: '%';
 TK_AMPERSAND: '&';
 TK_LLAVE_IZQ: '{';
 TK_LLAVE_DER: '}';
+TK_COMILLA: '\'';
 HTML_CODE: '\'' .*? '\'';
-COPY: 'copy';
-H1: 'h1';
-INSERT: 'insert';
-FROM: 'from';
-HERO: 'hero';
-FOOTER: 'footer';
-HEADER: 'header';
-COLOR: 'color';
+
 // If whitespaces counted
 //channels { WHITESPACES }
 // and you use them this way
@@ -64,12 +72,13 @@ WS: [\t\r\n]+ -> skip;
  */
 
 einfach_program :  create_specification | copy_specification | insert_specification | tag;
-create_specification: CREATE component TK_DOS_PUNTOS TK_LLAVE_IZQ parameter TK_LLAVE_DER;
-insert_specification: INSERT HTML_CODE;
+create_specification: CREATE component TK_IGUAL TK_LLAVE_IZQ parameters TK_LLAVE_DER;
+insert_specification: INSERT insert_type TK_IGUAL strings;
+insert_type: HTML | CSS | JS;
 copy_specification: COPY tag FROM url;
 tag:  | TK_MENORQUE strings TK_MAYORQUE strings TK_MENORQUE TK_DIV strings TK_MAYORQUE
 | STRING;
-component : HERO | FOOTER | HEADER | buttons;
+component : IMAGE | HERO | FOOTER | HEADER | buttons;
 buttons: TK_COR_IZQ button TK_COR_DER |  ;
 button: buttons | ;
 
@@ -79,8 +88,14 @@ string : TK_COMA strings | ;
 
 
 attribute: attribute_type TK_DOS_PUNTOS value;
-parameter:  | parameters;
-parameters : attribute | attribute TK_COMA parameters;
+
+
+
+parameters : parameter_specification TK_IGUAL HTML_CODE parameter;
+parameter : TK_COMA parameters | ;
+
+parameter_specification: URL | SIZE;
+
 attribute_type: COLOR;
 name_tag: H1;
 value: STRING;

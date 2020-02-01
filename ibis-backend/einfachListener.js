@@ -38,6 +38,15 @@ einfachListener.prototype.exitInsert_specification = function(ctx) {
 };
 
 
+// Enter a parse tree produced by einfachParser#insert_type.
+einfachListener.prototype.enterInsert_type = function(ctx) {
+};
+
+// Exit a parse tree produced by einfachParser#insert_type.
+einfachListener.prototype.exitInsert_type = function(ctx) {
+};
+
+
 // Enter a parse tree produced by einfachParser#copy_specification.
 einfachListener.prototype.enterCopy_specification = function(ctx) {
 };
@@ -110,6 +119,15 @@ einfachListener.prototype.exitAttribute = function(ctx) {
 };
 
 
+// Enter a parse tree produced by einfachParser#parameters.
+einfachListener.prototype.enterParameters = function(ctx) {
+};
+
+// Exit a parse tree produced by einfachParser#parameters.
+einfachListener.prototype.exitParameters = function(ctx) {
+};
+
+
 // Enter a parse tree produced by einfachParser#parameter.
 einfachListener.prototype.enterParameter = function(ctx) {
 };
@@ -119,12 +137,12 @@ einfachListener.prototype.exitParameter = function(ctx) {
 };
 
 
-// Enter a parse tree produced by einfachParser#parameters.
-einfachListener.prototype.enterParameters = function(ctx) {
+// Enter a parse tree produced by einfachParser#parameter_specification.
+einfachListener.prototype.enterParameter_specification = function(ctx) {
 };
 
-// Exit a parse tree produced by einfachParser#parameters.
-einfachListener.prototype.exitParameters = function(ctx) {
+// Exit a parse tree produced by einfachParser#parameter_specification.
+einfachListener.prototype.exitParameter_specification = function(ctx) {
 };
 
 
