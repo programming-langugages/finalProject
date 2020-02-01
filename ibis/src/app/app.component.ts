@@ -29,7 +29,12 @@ export class AppComponent {
   }
 
   goToPages(){
+    this.router.navigate(['/pages'])
+    this.menuCtrl.close();
+    }
+
+    goToCreatePage(){
       this.router.navigate(['/create-page'])
-      this.menuCtrl.close();
+     
     }
 }

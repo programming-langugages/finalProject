@@ -23,7 +23,7 @@ export class CreateRowPage implements OnInit {
     for(let size of sizes){
       layout.push({
         size : size,
-        content: '<p>Nicolás maricon ijoputa</p>'
+        content: ''
       })
     }
     this.modalController.dismiss(layout);

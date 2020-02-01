@@ -15,6 +15,10 @@ export class HomePage {
     this.router.navigate(['/create-page'])
   }
 
+  goToPages(){
+    this.router.navigate(['/pages'])
+  }
+
   openMenu() {
     this.menuCtrl.open();
   }

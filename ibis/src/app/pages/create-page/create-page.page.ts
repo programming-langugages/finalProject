@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, MenuController } from '@ionic/angular';
 import { CreateRowPage } from 'src/app/modals/create-row/create-row.page';
+import { Storage } from '@ionic/storage';
+import { ToolsService } from 'src/app/services/tools.service';
+import { ToastController } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-create-page',
@@ -13,7 +18,12 @@ export class CreatePagePage implements OnInit {
 
   constructor(
     public modalController: ModalController,
-    public menuCtrl: MenuController
+    public menuCtrl: MenuController,
+    private storage: Storage,
+    public tools: ToolsService,
+    public toastController: ToastController,
+    private http: HttpClient,
+    public loadingController: LoadingController
   ) {
 
    }
@@ -22,6 +32,24 @@ export class CreatePagePage implements OnInit {
 
   }
 
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Generando página...'
+    });
+    await loading.present();
+  }
+
+  async dismissLoader() {
+    return await this.loadingController.dismiss()
+  }
+
+  ionViewDidEnter(){
+    if(this.tools.currentPageName)
+      this.pageName = this.tools.currentPageName
+    if(this.tools.currentRows)
+      this.rows = this.tools.currentRows
+    console.log("current rows", this.tools.currentRows)
+  }
 
   deleteRows(){
     this.rows = []
@@ -55,8 +83,9 @@ async presentCreateRowModal(){
   return await modal.present();
 }
 
-generatePage(){
+async generatePage(){
   console.log(this.rows)
+  await this.presentLoading();
   var header = `
   <html>
     <head>
@@ -74,7 +103,7 @@ generatePage(){
     for(let col of row.cols){
       body += `
           <div class="col-`+ col.size +`">
-            `+ col.content + `
+            `+ await this.getTranslation(col.content) + `
           </div>
       `
     }
@@ -89,8 +118,9 @@ generatePage(){
   `
 
   var page = header + body + end_body
-console.log(page)
-  //1this.download(page, this.pageName + '.html', 'text/plain');
+  console.log(page)
+  this.download(page, this.pageName + '.html', 'text/plain');
+  await this.dismissLoader();
 }
 
 download(strData, strFileName, strMimeType) {
@@ -100,12 +130,7 @@ download(strData, strFileName, strMimeType) {
         d = A[0],
         n = A[1],
         t = A[2] || "text/plain";
-
-    //build download link:
     a.href = "data:" + strMimeType + "charset=utf-8," + escape(strData);
-
-
-
     if ('download' in a) { //FF20, CH19
         a.setAttribute("download", n);
         a.innerHTML = "downloading...";
@@ -118,9 +143,6 @@ download(strData, strFileName, strMimeType) {
         }, 66);
         return true;
     }; /* end if('download' in a) */
-
-
-
     //do iframe dataURL download: (older W3)
     var f = D.createElement("iframe");
     D.body.appendChild(f);
@@ -130,4 +152,43 @@ download(strData, strFileName, strMimeType) {
     }, 333);
  }
 
+
+ async savePage(){
+  var pages = await this.storage.get('pages')
+  if(!pages){
+    pages = []
+    pages.push({name: this.pageName, rows: this.rows})
+  }else{
+    var page = pages.find((item) => item.name == this.pageName)
+    if(page)
+      page.rows = this.rows
+    else
+      pages.push({name: this.pageName, rows: this.rows})
+  }
+  this.presentToast()
+  this.storage.set('pages', pages)
+ }
+
+
+ async presentToast() {
+  const toast = await this.toastController.create({
+    message: 'Your page have been saved.',
+    duration: 2000
+  });
+  toast.present();
+}
+
+
+ getTranslation(content):Promise<any>{
+   let url = "http://localhost:8000/getTranslation/" //TIENE QUE PONER EL ENDPOINT DE VERDAD
+   let body = {
+     content: content.toString()
+   }
+   console.log("Body request", body)
+   return this.http.post(url, body).toPromise()
+   .catch((error)=>{
+    console.error("Error in translation", error)
+    return Promise.resolve(content) //CUANDO DA ERROR DEVOLVEMOS EL MISMO CONTENT SIN SER TRADUCIDO
+   })
+ }
 }
