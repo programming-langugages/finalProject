@@ -13,12 +13,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //Modals
 import { CreateRowPage } from './modals/create-row/create-row.page';
 import { CreateRowPageModule } from './modals/create-row/create-row.module';
-
+//Modules
+import { IonicStorageModule } from '@ionic/storage';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [CreateRowPage],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, CreateRowPageModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, CreateRowPageModule, IonicStorageModule.forRoot(), HttpClientModule],
   providers: [
     StatusBar,
     SplashScreen,

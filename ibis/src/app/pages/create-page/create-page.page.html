@@ -62,9 +62,9 @@
         </ion-button>
       </div>
 
-      <ion-col class="colContainer" *ngFor="let col of row.cols" size="{{col.size}}">
+      <ion-col class="colContainer" *ngFor="let col of row.cols;let j = index" size="{{col.size}}">
         <ion-item class="itemContainer">
-          <ion-textarea rows="5" placeholder="Enter your code here..."></ion-textarea>
+          <ion-textarea name="col{{i}}{{j}}" [(ngModel)]="col.content" rows="5" placeholder="Enter your code here..."></ion-textarea>
         </ion-item>
       </ion-col>
     </ion-row>

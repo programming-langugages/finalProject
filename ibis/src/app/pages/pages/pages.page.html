@@ -37,19 +37,14 @@
 <!--PAGES-->
 <mat-toolbar>
   <mat-toolbar-row>
-    <span>Mis páginas</span>
-    <!-- Icons -->
-    <div>
-      <ion-button color="danger" (click)="deleteRows()">
-        <ion-icon slot="start" name="remove"></ion-icon>
-        Delete rows
-      </ion-button>
-      <ion-button (click)="presentCreateRowModal()">
-        <ion-icon slot="start" name="add"></ion-icon>
-        Add row
-      </ion-button>
-    </div>
-
+    <span>My pages</span>
   </mat-toolbar-row>
 </mat-toolbar>
+<div class="pagesContainer">
+  <ion-card (click)="openPage(page)" *ngFor="let page of pages">{{page.name}}</ion-card>
+</div>
+<p *ngIf="!pages" class="textContainer">You don't have any pages, create one!</p>
+<div class="generateContainer">
+  <a (click)="newPage()" class="animatedButton"><span>New Page</span></a>
+</div>
 </ion-content>

@@ -1,0 +1,22 @@
+.textContainer{
+    text-align: center;
+    margin: 50px 0;
+}
+
+.pagesContainer{
+    margin: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    ion-card{
+        width: 300px;
+        display: flex;
+        height: 150px;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        cursor: pointer;
+        background-color: aliceblue;
+    }
+}
