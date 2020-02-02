@@ -180,12 +180,13 @@ download(strData, strFileName, strMimeType) {
 
 
  getTranslation(content):Promise<any>{
-   let url = "http://localhost:8000/getTranslation/" //TIENE QUE PONER EL ENDPOINT DE VERDAD
+   let url = "http://localhost:1337" //TIENE QUE PONER EL ENDPOINT DE VERDAD
    let body = {
      content: content.toString()
    }
    console.log("Body request", body)
    return this.http.post(url, body).toPromise()
+   .then((response) => {return Promise.resolve(response.translation)})
    .catch((error)=>{
     console.error("Error in translation", error)
     return Promise.resolve(content) //CUANDO DA ERROR DEVOLVEMOS EL MISMO CONTENT SIN SER TRADUCIDO
