@@ -80,6 +80,8 @@ HTMLeinfachListener.prototype.exitEinfach_program = function(ctx) {
   var text = getTextOfChildrenModified(ctx);
   console.log("Final text:    " + text);
   text = text.replace(/\"/g, "\'");
+  text = text.replace(/\\n/g, "\\\\n")
+  text = text.replace(/(?:\r\n|\r|\n)/g, '\\n');
   text_json = "{\"translation\": \""  + text.toString() + "\"}"
   this.Res.write(text_json);
 };
@@ -116,19 +118,36 @@ HTMLeinfachListener.prototype.enterCreate_specification = function(ctx) {
 
 // Exit a parse tree produced by einfachParser#create_specification.
 HTMLeinfachListener.prototype.exitCreate_specification = function(ctx) {
+  var hero_template_part_1 = `    <section class="hero">
+        <div class="hero-inner">`
+
+
+  var hero_template_part_3 = `</div>
+    </section>
+    <main>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec nibh molestie, efficitur leo sed, viverra nunc. Donec vehicula accumsan erat facilisis ullamcorper. Donec commodo quis dui nec placerat. Donec mi orci, scelerisque eget nisl ac, hendrerit condimentum odio. Nam dictum odio eget quam tempus, a mattis odio ornare. Nullam auctor libero ut libero suscipit, ut accumsan nunc condimentum. Donec ullamcorper maximus sapien quis egestas.</p>
+
+        <p>Mauris viverra scelerisque lobortis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce ultrices enim sit amet elit tincidunt maximus. Suspendisse vitae pellentesque lectus. Duis commodo leo suscipit augue mollis, non venenatis dolor ullamcorper. Duis tincidunt scelerisque lacus, vel vehicula leo consectetur vel. Duis posuere nisl non odio consequat ultrices. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+        <p>Etiam a leo nec mi blandit euismod. Etiam fringilla odio vitae risus ornare, id bibendum velit consequat. Fusce posuere risus sollicitudin condimentum ultrices. Fusce gravida, purus eget laoreet mattis, velit sapien ultrices diam, id dapibus erat leo id quam. Maecenas quis risus convallis, placerat elit non, iaculis tortor. Nullam porttitor magna risus, quis bibendum metus tincidunt in. Etiam vel ligula ac risus mattis tincidunt vel sit amet ante. Morbi et viverra ligula. Ut ac dignissim nisi, condimentum imperdiet mauris. Pellentesque ut ipsum vel diam tristique faucibus eu et lectus. Maecenas posuere neque non lacus bibendum, sit amet pharetra justo semper. Sed mi risus, tempor sit amet ligula eget, varius pretium est. Sed a odio in orci accumsan pretium suscipit ut quam.</p>
+    </main>
+  `
   var translation;
+  var attributes = getTranslationOrText(ctx,4);
+  var component = getTranslationOrText(ctx,1);
   // Look which component it is created
-  switch (getTranslationOrText(ctx,1)) {
+  switch (component) {
     //<img src="blablabla" style="width: 200px; height: 300px">
     case "image":
-      translation = "<img " + getTranslationOrText(ctx,4) + " alt='Image generated with Ibis'>";
+      translation = "<img " + attributes + " alt='Image generated with Ibis'>";
       break;
     // <a href="https://www.w3schools.com">This is a link</a>
     case "link":
-      translation = "<a href='" + getTranslationOrText(ctx,4) + "'";
+      translation = "<a" + attributes + ">Click here!</a>";
       break;
-    default:
-      break;
+    // <a href="https://example.com/" class="btn">Go ahead...</a>
+    case "hero":
+      translation = hero_template_part_1 +  attributes + hero_template_part_3 ;
   }
   ctx.text = translation;
 
@@ -143,18 +162,34 @@ HTMLeinfachListener.prototype.enterParameters = function(ctx) {
 // Exit a parse tree produced by einfachParser#parameters.
 HTMLeinfachListener.prototype.exitParameters = function(ctx) {
 
+ //parameter_specification = parameter moreparameter
   var type_parameter = getTranslationOrText(ctx,0)
+  var information_parameter = getTranslationOrText(ctx,2)
   var translation;
+
+  var hero_template_part_2 =`<h2>Look at this website and bask in its amazing glory!</h2>
+            `
   switch(type_parameter){
     case "url":
-      translation = "src='" + getTranslationOrText(ctx,2).replace(/\'/g, '') + "' ";
+      translation = "src='" + information_parameter.replace(/\'/g, '') + "' ";
+      break;
+    case "link":
+      translation = "href='" + information_parameter.replace(/\'/g, '') + "' ";
       break;
     case "size":
-      translation = "style\=" + getWidthAndHeight(getTranslationOrText(ctx,2)) + "' ";
+      translation = "style\=" + getWidthAndHeight(information_parameter) + "' ";
       break;
     case "text":
-      translation = ">" + getTranslationOrText(ctx,2).replace(/\'/g, '')  ;
+      translation = ">" + information_parameter.replace(/\'/g, '')  ;
       break;
+    case "heroname":
+      translation = "<h1> " + information_parameter.replace(/\'/g, '') + "</h1>\n" + hero_template_part_2
+      break;
+    // <a href="https://example.com/" class="btn">Go ahead...</a>
+    case "herourl":
+      translation = "<a href='" + information_parameter.replace(/\'/g, '') + "' class='btn'>Go ahead!</a>";
+      break;
+
   }
   translation +=  getTranslationOrText(ctx,3)
   ctx.text = translation;
@@ -169,19 +204,8 @@ HTMLeinfachListener.prototype.enterParameter = function(ctx) {
 // Exit a parse tree produced by einfachParser#parameter.
 HTMLeinfachListener.prototype.exitParameter = function(ctx) {
 
-
-  // if(!ctx.children == null)console.log(getTranslationOrText(ctx,1))
-  //
-  // if(!ctx.children == null)console.log(getTranslationOrText(ctx,0))
-  // if(!ctx.children == null)
-
-    try {
-      ctx.text = getTranslationOrText(ctx,1);
-    }
-    catch(error) {
-      ctx.text = getTextOfChildrenModified(ctx);
-    }
-
+  if(getTranslationOrText(ctx,1).toString() != "undefined") ctx.text = getTranslationOrText(ctx,1)
+  else ctx.text = ""
 };
 
 

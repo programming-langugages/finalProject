@@ -26,6 +26,7 @@ IMPORT: 'import';
 NEWLINE: 'newline' | 'nl';
 PARAGRAPH: 'p';
 LINK: 'link';
+HERONAME: 'heroname';
 TK_NUM:  [0-9]+;
 STRING: [a-zA-Z0-9]+;
 TK_DOS_PUNTOS: ':';
@@ -109,7 +110,7 @@ name_tag: H1;
 value: STRING;
 url: STRING;
 
-parameter_specification: URL | SIZE  | text ;
+parameter_specification: URL | SIZE  | text | HERONAME ;
 
 text: strings;
 import_types: BOOTSTRAP | ICONS;
