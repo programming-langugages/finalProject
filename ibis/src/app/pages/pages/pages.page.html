@@ -41,7 +41,12 @@
   </mat-toolbar-row>
 </mat-toolbar>
 <div class="pagesContainer">
-  <ion-card (click)="openPage(page)" *ngFor="let page of pages">{{page.name}}</ion-card>
+  <ion-card (click)="openPage(page)" *ngFor="let page of pages">
+    <ion-button (click)="$event.stopPropagation(); removePage(page)" fill="clear">
+      <ion-icon slot="icon-only" name="close"></ion-icon>
+    </ion-button>
+    {{page.name}}
+  </ion-card>
 </div>
 <p *ngIf="!pages" class="textContainer">You don't have any pages, create one!</p>
 <div class="generateContainer">
