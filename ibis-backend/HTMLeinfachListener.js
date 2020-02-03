@@ -21,12 +21,7 @@ HTMLeinfachListener.prototype = Object.create(EinfachListener.prototype);
 
 
 function getTextOfChildrenModified(ctx, fromRule, untilRule){
-
-
-
-
   var text = '';
-
   if(!fromRule) fromRule = 0;
   if(!untilRule) if(ctx.children == null) untilRule = 0; else untilRule = ctx.children.length;
   for (var index = fromRule; index <  untilRule ; index++ ) {
@@ -37,22 +32,17 @@ function getTextOfChildrenModified(ctx, fromRule, untilRule){
           text += ctx.children[index].getText();
   }
   return text
-
-
-
 };
 
 function getTranslationOrText(ctx, index){
-
-
-    try {
-  var result = "";
-  //if(!ctx.chilren || ctx.children == null) {console.log("fallo en " + index); return result;}
-  if(ctx.children[index].text != null)
-      result += ctx.children[index].text;
-  else
-      result += ctx.children[index].getText();
-  return result;
+  try {
+    var result = "";
+    //if(!ctx.chilren || ctx.children == null) {console.log("fallo en " + index); return result;}
+    if(ctx.children[index].text != null)
+        result += ctx.children[index].text;
+    else
+        result += ctx.children[index].getText();
+    return result;
   }catch(error) {
     //console.error(error);
     return "";
@@ -67,9 +57,35 @@ function getWidthAndHeight(size){
   var width = splitted[0];
   var height = splitted[1];
   var attribute;
-  if(!height) attribute = "font-size:" + width.toString() + "px";
+  if(!height) attribute = "'font-size:" + width.toString() + "px";
   else attribute = "'width:" + width.toString() + "px;" + "height:" + height.toString() + "px";
   return attribute;
+}
+
+
+function getStringByClassRegex(classesFromRegex, classToWrite){
+  var result = ''
+  for(let classuwu of classesFromRegex){
+    var optionalSemicolon;
+    if(classuwu == classesFromRegex[classesFromRegex.length - 1]) optionalSemicolon = ""
+    else optionalSemicolon = ";"
+    aux_result = classuwu.replace(/(class|style)='/g, '');
+    result += aux_result.replace(/'$/, '') + optionalSemicolon;
+
+  }
+  return classToWrite + "=\'" + result + "\'";
+}
+function fixRegexes(classRegex, stringToClean, classToWrite){
+
+  var classesFromRegex = stringToClean.match(classRegex);
+
+  var stringsWithRegex = ""
+  if(classesFromRegex){
+    stringToClean = stringToClean.replace(classRegex, '');
+    stringsWithRegex = getStringByClassRegex(classesFromRegex, classToWrite);
+  }
+
+    return {first: stringsWithRegex, second: stringToClean}
 }
 
 HTMLeinfachListener.prototype.constructor = HTMLeinfachListener;
@@ -174,14 +190,11 @@ HTMLeinfachListener.prototype.exitCreate_specification = function(ctx) {
   // Look which component it is created
   switch (component) {
     //<img src="blablabla" style="width: 200px; height: 300px">
+
     case "image":
-      var classRegex = /class='.*'/
-      var classes = attributes.match(classRegex)
-      if(classes){
-        translation = "<div " + classes[0] + "><img " + attributes.replace(classRegex, '') + " alt='Image generated with Ibis'></div>";
-      }else{
-        translation = "<div><img " + attributes + " alt='Image generated with Ibis'></div>";
-      }
+      var classRegex = /class=(?<!\\)'[a-zA-Z0-9\s(\\')]*(?<!\\)'/g
+      var information_fixed = fixRegexes(classRegex, attributes, "class")
+      translation = "<div " + information_fixed.first + "><img " + information_fixed.second + " alt='Image generated with Ibis'></div>";
       break;
     // <a href="https://www.w3schools.com">This is a link</a>
     case "link":
@@ -200,7 +213,9 @@ HTMLeinfachListener.prototype.exitCreate_specification = function(ctx) {
     //create paragraph = {size: '15'. color: '#ffff', text:"bla bla bla"}
     //<p style="font-size:15px; color: #fff">bla bla bla</p>
     case "paragraph":
-      translation = "<p " + attributes + "</p"
+      var styleRegex = /style=(?<!\\)'[a-zA-Z0-9:\-#\s(\\')]*(?<!\\)'/g
+      var information_fixed = fixRegexes(styleRegex, attributes, "style")
+      translation = "<p " + information_fixed.first + information_fixed.second + "</p>"
   }
   ctx.text = translation;
 
