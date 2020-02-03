@@ -170,24 +170,15 @@ HTMLeinfachListener.prototype.enterCreate_specification = function(ctx) {
 
 // Exit a parse tree produced by einfachParser#create_specification.
 HTMLeinfachListener.prototype.exitCreate_specification = function(ctx) {
-  var hero_template_part_1 = `    <section class="hero">
-        <div class="hero-inner">`
 
-
-  var hero_template_part_3 = `</div>
-    </section>
-    <main>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec nibh molestie, efficitur leo sed, viverra nunc. Donec vehicula accumsan erat facilisis ullamcorper. Donec commodo quis dui nec placerat. Donec mi orci, scelerisque eget nisl ac, hendrerit condimentum odio. Nam dictum odio eget quam tempus, a mattis odio ornare. Nullam auctor libero ut libero suscipit, ut accumsan nunc condimentum. Donec ullamcorper maximus sapien quis egestas.</p>
-
-        <p>Mauris viverra scelerisque lobortis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce ultrices enim sit amet elit tincidunt maximus. Suspendisse vitae pellentesque lectus. Duis commodo leo suscipit augue mollis, non venenatis dolor ullamcorper. Duis tincidunt scelerisque lacus, vel vehicula leo consectetur vel. Duis posuere nisl non odio consequat ultrices. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-        <p>Etiam a leo nec mi blandit euismod. Etiam fringilla odio vitae risus ornare, id bibendum velit consequat. Fusce posuere risus sollicitudin condimentum ultrices. Fusce gravida, purus eget laoreet mattis, velit sapien ultrices diam, id dapibus erat leo id quam. Maecenas quis risus convallis, placerat elit non, iaculis tortor. Nullam porttitor magna risus, quis bibendum metus tincidunt in. Etiam vel ligula ac risus mattis tincidunt vel sit amet ante. Morbi et viverra ligula. Ut ac dignissim nisi, condimentum imperdiet mauris. Pellentesque ut ipsum vel diam tristique faucibus eu et lectus. Maecenas posuere neque non lacus bibendum, sit amet pharetra justo semper. Sed mi risus, tempor sit amet ligula eget, varius pretium est. Sed a odio in orci accumsan pretium suscipit ut quam.</p>
-    </main>
-  `
   var translation;
   var attributes = getTranslationOrText(ctx,4);
   var component = getTranslationOrText(ctx,1);
+  var classRegex = /class='.*'/
+  var styleRegex = /style='.*'/
   // Look which component it is created
+  console.log("ATRIBUTES", attributes)
+  console.log("COMPONENT", component)
   switch (component) {
     //<img src="blablabla" style="width: 200px; height: 300px">
 
@@ -202,7 +193,13 @@ HTMLeinfachListener.prototype.exitCreate_specification = function(ctx) {
       break;
     // <a href="https://example.com/" class="btn">Go ahead...</a>
     case "hero":
-      translation = hero_template_part_1 +  attributes + hero_template_part_3 ;
+      var styles = attributes.match(styleRegex)
+      var hero_template_part_1 = `    <section class="hero" ` + styles[0] + `>
+      <div class="hero-inner">`
+      var hero_template_part_3 = `</div>
+        </section>
+      `
+      translation = hero_template_part_1 +  attributes.replace(styleRegex, '') + hero_template_part_3 ;
       break;
     // <button type="button" onclick="alert('Hello world!')">Click Me!</button>
     //4: FUNCTION
@@ -235,8 +232,9 @@ HTMLeinfachListener.prototype.exitParameters = function(ctx) {
   var information_parameter = getTranslationOrText(ctx,2).replace(/\'/g, '')
   var translation;
 
-  var hero_template_part_2 =`<h2>Look at this website and bask in its amazing glory!</h2>
-            `
+
+  console.log("type parameter", type_parameter)
+  console.log("type information_parameter", information_parameter)
   switch(type_parameter){
     case "url":
       translation = "src='" + information_parameter + "' ";
@@ -253,18 +251,24 @@ HTMLeinfachListener.prototype.exitParameters = function(ctx) {
     case "text":
       translation = ">" + information_parameter  ;
       break;
-    case "heroname":
-      translation = "<h1> " + information_parameter + "</h1>\n" + hero_template_part_2
+    case "heroTitle":
+      translation = "<h1> " + information_parameter + "</h1>\n"
       break;
-    // <a href="https://example.com/" class="btn">Go ahead...</a>
+    case "heroSubtitle":
+      translation = "<h3> " + information_parameter + "</h3>\n"
+    break;
     case "herourl":
-      translation = "<a href='" + information_parameter + "' class='btn'>Go ahead!</a>";
+      translation = "<a href\='" + information_parameter + "' class\='btn btn-primary btn-lg' role\='button' target\='_blank'>¡Más información!</a>\n";
       break;
     case "function":
       translation = information_parameter + "'"
       break;
     case "alignment":
       translation = "class='" + information_parameter + "'";
+      break;
+    case "heroImg":
+      translation = "style\='background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url("+ information_parameter +");'";
+      break;
 
   }
   translation +=  getTranslationOrText(ctx,3)

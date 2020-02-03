@@ -153,17 +153,11 @@ async generatePage(){
             margin-top: 0;
             margin-bottom: 0.5em;
         }
+        .hero h3 {
+          color: white;
+        }
         .hero .btn {
-          display: block;
-          width: 200px;
-          padding: 1em;
           margin-top: 50px;
-          border: 3px solid black;
-          margin-left: auto;
-          margin-right: auto;
-          color: black;
-          text-decoration: none;
-          font-size: 1.5em;
         }
       </style>
     </body>

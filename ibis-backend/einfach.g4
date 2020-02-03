@@ -30,9 +30,12 @@ PARAGRAPH_LONG: 'paragraph';
 LINK: 'link';
 TEXT: 'text';
 FUNCTION: 'function';
-HERONAME: 'heroname';
+HEROTITLE: 'heroTitle';
+HEROSUBTITLE: 'heroSubtitle';
 HEROURL: 'herourl';
+HEROIMG: 'heroImg';
 ALIGNMENT: 'alignment';
+
 TK_NUM:  [0-9]+;
 STRING: [a-zA-Z0-9]+;
 TK_DOS_PUNTOS: ':';
@@ -99,8 +102,7 @@ import_specification: IMPORT import_types;
 
 create_specification: CREATE component TK_IGUAL TK_LLAVE_IZQ parameters TK_LLAVE_DER;
 component : IMAGE | HERO | FOOTER | HEADER | LINK | BUTTON | PARAGRAPH | PARAGRAPH_LONG;
-parameter_specification: URL | SIZE  | HERONAME | FUNCTION | TEXT | ALIGNMENT | HEROURL | COLOR;
-
+parameter_specification: URL | SIZE    | ALIGNMENT | HEROURL | COLOR | HEROTITLE | HEROSUBTITLE | FUNCTION | TEXT  | HEROURL | HEROIMG;
 
 insert_specification: INSERT insert_type TK_IGUAL strings;
 insert_type: HTML | CSS | JS | LINK;
