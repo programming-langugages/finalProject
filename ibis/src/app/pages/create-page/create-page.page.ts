@@ -94,7 +94,7 @@ async generatePage(){
       `+ await this.getTranslation(this.header) + `
     </head>
     <body>
-      <div class="container">
+      <div>
   `
   var body = ''
   for(let row of this.rows){
@@ -128,6 +128,42 @@ async generatePage(){
           display: flex;
           justify-content: center;
           align-items: center;
+        }
+        .hero {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+          
+            /* Text styles */
+            text-align: center;
+            
+            /* Background styles */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url('https://codetheweb.blog/assets/img/posts/full-image-hero/image.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .hero h1 {
+            font-size: 5em;
+            color: white;
+            margin-top: 0;
+            margin-bottom: 0.5em;
+        }
+        .hero .btn {
+          display: block;
+          width: 200px;
+          padding: 1em;
+          margin-top: 50px;
+          border: 3px solid black;
+          margin-left: auto;
+          margin-right: auto;
+          color: black;
+          text-decoration: none;
+          font-size: 1.5em;
         }
       </style>
     </body>
@@ -203,7 +239,10 @@ download(strData, strFileName, strMimeType) {
    }
    console.log("Body request", body)
    return this.http.post(url, body).toPromise()
-   .then((response:any) => {return Promise.resolve(response.translation)})
+   .then((response:any) => {
+     console.log("translation:", response)
+     return Promise.resolve(response.translation)
+    })
    .catch((error)=>{
     console.error("Error in translation", error)
     return Promise.resolve(content) //CUANDO DA ERROR DEVOLVEMOS EL MISMO CONTENT SIN SER TRADUCIDO
