@@ -150,10 +150,11 @@ HTMLeinfachListener.prototype.exitInsert_specification = function(ctx) {
   // Look which specification it is about
   switch(getTranslationOrText(ctx,1)){
     case "html":
-      ctx.text = getTranslationOrText(ctx,3);
+
+      ctx.text = getTranslationOrText(ctx,3).replace(/\'/g, '');
       break;
     case "css":
-      ctx.text = "<style> " + getTranslationOrText(ctx,3) + " </style>"
+      ctx.text = "<style> " + getTranslationOrText(ctx,3).replace(/\'/g, '') + " </style>"
       break;
     case "js":
       ctx.text = "<script> " + getTranslationOrText(ctx,3).replace(/\'/g, '') + " </script>"
@@ -191,7 +192,7 @@ HTMLeinfachListener.prototype.exitCreate_specification = function(ctx) {
     // <a href="https://www.w3schools.com">This is a link</a>
     case "link":
       var href = attributes.match(hrefRegex)
-      translation = "<a target='_blank' "+ href[0] + attributes.replace(hrefRegex, '') + "></a>";
+      translation = "<a target='_blank' "+ href[0] +attributes.replace(hrefRegex, '') + "</a>";
       break;
     // <a href="https://example.com/" class="btn">Go ahead...</a>
     case "hero":
@@ -361,9 +362,10 @@ HTMLeinfachListener.prototype.exitCommand_specification = function(ctx) {
         for(var i = 0; i < number_of_times; i++) translation += "<br> </<br>";
       break;
     case "p":
-      translation += "<p>"
+
+      translation += "<p> "
       for(var i = 1; i < ctx.children.length; i++) translation += " " + getTranslationOrText(ctx,i) + " ";
-      translation += "</p>"
+      translation += "</p> "
   }
   ctx.text = translation;
 };

@@ -41,7 +41,6 @@ function escape_special_characters(input){
 
 
       if(!apostrophe_found && input[i] == '\'' && input[i+1] == '}' && input[i+2] == ";"){
-        console.log("verga")
         apostrophe_position = i;
         apostrophe_found = true;
       }
@@ -82,7 +81,7 @@ function escape_special_characters(input){
           }
       }
 
-      if(apostrophe_found && (input[i] == ',' || input[i] == '}')){
+      if(apostrophe_found && (input[i] == ',' || input[i] == '}' || input[i] == ';')){
         if(i == input.length) i -= 2
         apostrophe_found = false;
         for(var j = apostrophe_position; j < i-1; j++)
@@ -103,7 +102,10 @@ function escape_special_characters(input){
 
     if(input[input.length - 2] == "\"" && input[input.length - 3] == "\\")
       input = input.substring(0, input.length - 3) + "\"}";
+      if(input[input.length - 1] == "\"" && input[input.length - 2] == "\\")
+        input = input.substring(0, input.length - 2) + "\'";
 
+    if(input[input.length - 1] != '\'') console.log("vida " + input[input.length - 1])
     return input;
 }
 
