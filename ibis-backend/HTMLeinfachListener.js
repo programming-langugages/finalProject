@@ -175,7 +175,13 @@ HTMLeinfachListener.prototype.exitCreate_specification = function(ctx) {
   switch (component) {
     //<img src="blablabla" style="width: 200px; height: 300px">
     case "image":
-      translation = "<div><img " + attributes + " alt='Image generated with Ibis'></div>";
+      var classRegex = /class='.*'/
+      var classes = attributes.match(classRegex)
+      if(classes){
+        translation = "<div " + classes[0] + "><img " + attributes.replace(classRegex, '') + " alt='Image generated with Ibis'></div>";
+      }else{
+        translation = "<div><img " + attributes + " alt='Image generated with Ibis'></div>";
+      }
       break;
     // <a href="https://www.w3schools.com">This is a link</a>
     case "link":
@@ -243,7 +249,7 @@ HTMLeinfachListener.prototype.exitParameters = function(ctx) {
       translation = information_parameter + "'"
       break;
     case "alignment":
-      translation = "<class = '" + information_parameter + "";
+      translation = "class='" + information_parameter + "'";
 
   }
   translation +=  getTranslationOrText(ctx,3)
