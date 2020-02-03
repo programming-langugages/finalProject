@@ -37,4 +37,12 @@ export class PagesPage implements OnInit {
     this.tools.currentRows = null;
     this.router.navigate(['/create-page'])
   }
+
+  async removePage(page){
+    this.pages.splice(this.pages.indexOf(page), 1)
+    var pages = await this.storage.get('pages')
+    pages.splice(this.pages.indexOf(page), 1)
+    this.storage.set('pages', pages)
+  }
+ 
 }

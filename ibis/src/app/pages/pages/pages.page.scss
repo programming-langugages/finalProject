@@ -18,5 +18,14 @@
         font-size: 20px;
         cursor: pointer;
         background-color: aliceblue;
+        position: relative;
     }
+
+    ion-button{
+        position: absolute;
+        top: 0px;
+        right: 0px;
+    }
+
+
 }
