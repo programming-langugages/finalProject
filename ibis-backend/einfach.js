@@ -58,6 +58,11 @@ function escape_special_characters(input){
         apostrophe_found = true;
       }
 
+
+      if(!apostrophe_found && input[i] == '\'' && input[i+1] == '\"'){
+        apostrophe_position = i;
+        apostrophe_found = true;
+      }
       if(apostrophe_found && i == input.length){
 
         apostrophe_found = false;
@@ -93,6 +98,11 @@ function escape_special_characters(input){
         if(i == input.length) i += 2
       }
     }
+
+    input = input.replace(/(?:\r\n|\r|\n)/g, '');
+
+    if(input[input.length - 2] == "\"" && input[input.length - 3] == "\\")
+      input = input.substring(0, input.length - 3) + "\"}";
 
     return input;
 }
