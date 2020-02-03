@@ -269,6 +269,9 @@ HTMLeinfachListener.prototype.exitParameters = function(ctx) {
     case "heroImg":
       translation = "style\='background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url("+ information_parameter +");'";
       break;
+    default:
+      translation = information_parameter;
+      break;
 
   }
   translation +=  getTranslationOrText(ctx,3)
@@ -370,11 +373,10 @@ HTMLeinfachListener.prototype.enterStrings = function(ctx) {
 
 // Exit a parse tree produced by einfachParser#strings.
 HTMLeinfachListener.prototype.exitStrings = function(ctx) {
-  var translation;
+  var translation = "";
 
-  var current_string = getTranslationOrText(ctx,0);
-  var next_strings = getTranslationOrText(ctx,1);
-
+  var current_string = getTranslationOrText(ctx,0).replace(/\'/g, '');
+  var next_strings = getTranslationOrText(ctx,1).replace(/\'/g, '');
   if (current_string === "lorem" ||
     current_string === "ipsum" ||
     current_string === "test" ||
@@ -382,9 +384,14 @@ HTMLeinfachListener.prototype.exitStrings = function(ctx) {
     current_string = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lectus diam, rutrum ac mollis at, pellentesque a nisi. Cras a augue urna. Vivamus aliquet ornare est lobortis sagittis. Vivamus nec blandit mi. Ut eros nibh, mollis in porttitor a, dignissim quis est. Quisque nec ultricies tellus. Nam nec bibendum mauris. Vivamus maximus faucibus viverra. Sed fringilla ligula at dignissim vestibulum. Nam porttitor quam sit amet tempor commodo.`
   switch(ctx.children.length){
     case 3:
-      translation = current_string + " " + next_strings
+      translation = current_string + " " + next_strings;
+      break;
     case 2:
-      translation = current_string + " " + next_strings
+      translation = current_string + " " + next_strings;
+      break;
+    default:
+      translation = current_string + " " + next_strings;
+      break;
   }
   ctx.text = translation;
 };

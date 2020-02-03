@@ -112,6 +112,7 @@ copy_specification: COPY tag FROM url;
 tag:  | TK_MENORQUE strings TK_MAYORQUE strings TK_MENORQUE TK_DIV strings TK_MAYORQUE
 | STRING;
 
+strings_or_html: strings | HTML_CODE;
 
 
 strings : STRING string;

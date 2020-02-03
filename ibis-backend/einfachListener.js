@@ -110,6 +110,15 @@ einfachListener.prototype.exitTag = function(ctx) {
 };
 
 
+// Enter a parse tree produced by einfachParser#strings_or_html.
+einfachListener.prototype.enterStrings_or_html = function(ctx) {
+};
+
+// Exit a parse tree produced by einfachParser#strings_or_html.
+einfachListener.prototype.exitStrings_or_html = function(ctx) {
+};
+
+
 // Enter a parse tree produced by einfachParser#strings.
 einfachListener.prototype.enterStrings = function(ctx) {
 };
