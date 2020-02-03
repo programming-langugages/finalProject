@@ -104,7 +104,7 @@ create_specification: CREATE component TK_IGUAL TK_LLAVE_IZQ parameters TK_LLAVE
 component : IMAGE | HERO | FOOTER | HEADER | LINK | BUTTON | PARAGRAPH | PARAGRAPH_LONG;
 parameter_specification: URL | SIZE    | ALIGNMENT | HEROURL | COLOR | HEROTITLE | HEROSUBTITLE | FUNCTION | TEXT  | HEROURL | HEROIMG;
 
-insert_specification: INSERT insert_type TK_IGUAL strings;
+insert_specification: INSERT insert_type TK_IGUAL strings_or_html;
 insert_type: HTML | CSS | JS | LINK;
 
 copy_specification: COPY tag FROM url;

@@ -57,6 +57,26 @@ function escape_special_characters(input){
         apostrophe_position = i;
         apostrophe_found = true;
       }
+
+      if(apostrophe_found && i == input.length){
+
+        apostrophe_found = false;
+        for(var j = apostrophe_position; j <= i; j++)
+          if(input[j] == '\''
+            || input[j] == '\"'
+            || input[j] == '\\'
+            ){
+              //Replacing for "
+              input = input.replaceAt(j, "\"");
+              //Escaping the character
+              input = input.splice(j, 0, "\\");
+              j++;
+          }else if(input[j] == '='){
+                    input = input.splice(j, 0, "\\");
+                    j++;
+          }
+      }
+
       if(apostrophe_found && (input[i] == ',' || input[i] == '}')){
         if(i == input.length) i -= 2
         apostrophe_found = false;

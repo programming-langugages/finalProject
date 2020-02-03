@@ -156,7 +156,7 @@ HTMLeinfachListener.prototype.exitInsert_specification = function(ctx) {
       ctx.text = "<style> " + getTranslationOrText(ctx,3) + " </style>"
       break;
     case "js":
-      ctx.text = "<script> " + getTranslationOrText(ctx,3) + " </script>"
+      ctx.text = "<script> " + getTranslationOrText(ctx,3).replace(/\'/g, '') + " </script>"
       break;
   }
 
@@ -192,7 +192,7 @@ HTMLeinfachListener.prototype.exitCreate_specification = function(ctx) {
     case "link":
       var href = attributes.match(hrefRegex)
       translation = "<a target='_blank' "+ href[0] + attributes.replace(hrefRegex, '') + "></a>";
-      break; 
+      break;
     // <a href="https://example.com/" class="btn">Go ahead...</a>
     case "hero":
       var styles = attributes.match(styleRegex)
@@ -395,6 +395,7 @@ HTMLeinfachListener.prototype.exitStrings = function(ctx) {
       translation = current_string + " " + next_strings;
       break;
   }
+
   ctx.text = translation;
 };
 

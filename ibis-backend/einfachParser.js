@@ -59,7 +59,7 @@ var serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964",
     "LM\u0007@\u0002\u0002M\u000b\u0003\u0002\u0002\u0002NO\t\u0002\u0002",
     "\u0002O\r\u0003\u0002\u0002\u0002PQ\t\u0003\u0002\u0002Q\u000f\u0003",
     "\u0002\u0002\u0002RS\u0007\u0007\u0002\u0002ST\u0005\u0012\n\u0002T",
-    "U\u0007,\u0002\u0002UV\u0005\u001a\u000e\u0002V\u0011\u0003\u0002\u0002",
+    "U\u0007,\u0002\u0002UV\u0005\u0018\r\u0002V\u0011\u0003\u0002\u0002",
     "\u0002WX\t\u0004\u0002\u0002X\u0013\u0003\u0002\u0002\u0002YZ\u0007",
     "\u0004\u0002\u0002Z[\u0005\u0016\f\u0002[\\\u0007\b\u0002\u0002\\]\u0005",
     "*\u0016\u0002]\u0015\u0003\u0002\u0002\u0002^j\u0003\u0002\u0002\u0002",
@@ -902,8 +902,8 @@ Insert_specificationContext.prototype.TK_IGUAL = function() {
     return this.getToken(einfachParser.TK_IGUAL, 0);
 };
 
-Insert_specificationContext.prototype.strings = function() {
-    return this.getTypedRuleContext(StringsContext,0);
+Insert_specificationContext.prototype.strings_or_html = function() {
+    return this.getTypedRuleContext(Strings_or_htmlContext,0);
 };
 
 Insert_specificationContext.prototype.enterRule = function(listener) {
@@ -936,7 +936,7 @@ einfachParser.prototype.insert_specification = function() {
         this.state = 82;
         this.match(einfachParser.TK_IGUAL);
         this.state = 83;
-        this.strings();
+        this.strings_or_html();
     } catch (re) {
     	if(re instanceof antlr4.error.RecognitionException) {
 	        localctx.exception = re;
