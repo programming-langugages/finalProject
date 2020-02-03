@@ -48,7 +48,7 @@
     {{page.name}}
   </ion-card>
 </div>
-<p *ngIf="!pages" class="textContainer">You don't have any pages, create one!</p>
+<p *ngIf="!pages || pages.length == 0" class="textContainer">You don't have any pages, create one!</p>
 <div class="generateContainer">
   <a (click)="newPage()" class="animatedButton"><span>New Page</span></a>
 </div>

@@ -53,7 +53,20 @@
 
     </mat-toolbar-row>
   </mat-toolbar>
+
   <ion-grid>
+    <p class="headTitle">Header</p>
+  <ion-row class="rowContainer">
+    <ion-col class="colContainer">
+      <ion-item class="itemContainer">
+        <ion-textarea name="header" [(ngModel)]="header" rows="5" placeholder="Enter your code here..."></ion-textarea>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  </ion-grid>
+  
+  <ion-grid>
+    <p *ngIf="rows.length > 0" class="headTitle bodyTitle">Body</p>
     <ion-row class="rowContainer" *ngFor="let row of rows;let i = index">
       <div class="toolsContainer">
         <ion-input clearInput name="row{{i}}" [(ngModel)]="row.name"></ion-input>

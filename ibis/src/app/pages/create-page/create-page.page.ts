@@ -15,6 +15,7 @@ import { LoadingController } from '@ionic/angular';
 export class CreatePagePage implements OnInit {
   rows:any = []
   pageName: any = "New Page"
+  header: any = "";
 
   constructor(
     public modalController: ModalController,
@@ -90,6 +91,7 @@ async generatePage(){
   <html>
     <head>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      `+ await this.getTranslation(this.header) + `
     </head>
     <body>
       <div class="container">
@@ -113,13 +115,28 @@ async generatePage(){
   }
   var end_body = `
       </div>
+      <style>
+        .verticalCenter{
+          display: flex;
+          align-items: center;
+        }
+        .horizontalCenter{
+          display: flex;
+          justify-content: center;
+        }
+        .absoluteCenter{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      </style>
     </body>
   </html>
   `
 
   var page = header + body + end_body
   console.log(page)
-  this.download(page, this.pageName + '.html', 'text/plain');
+  await this.download(page, this.pageName + '.html', 'text/plain');
   await this.dismissLoader();
 }
 
