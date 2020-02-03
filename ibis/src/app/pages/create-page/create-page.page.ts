@@ -98,10 +98,18 @@ async generatePage(){
   `
   var body = ''
   for(let row of this.rows){
-    body += `
+    if(row.name != 'Hero'){
+      body += `
+        <!--` + row.name + `-->
+        <div class="row container">
+      `
+    }else{
+      body += `
         <!--` + row.name + `-->
         <div class="row">
-    `
+      `
+    }
+    
     for(let col of row.cols){
       body += `
           <div class="col-`+ col.size +`">
@@ -130,7 +138,7 @@ async generatePage(){
           align-items: center;
         }
         .hero {
-            width: 100vw;
+            width: 100%;
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -141,11 +149,11 @@ async generatePage(){
             text-align: center;
             
             /* Background styles */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url('https://codetheweb.blog/assets/img/posts/full-image-hero/image.jpg');
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
             background-attachment: fixed;
+            margin-bottom: 100px;
         }
         .hero h1 {
             font-size: 5em;
@@ -158,6 +166,9 @@ async generatePage(){
         }
         .hero .btn {
           margin-top: 50px;
+        }
+        .container{
+          margin: 50px auto !important;
         }
       </style>
     </body>

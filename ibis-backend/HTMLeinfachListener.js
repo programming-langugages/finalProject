@@ -176,6 +176,7 @@ HTMLeinfachListener.prototype.exitCreate_specification = function(ctx) {
   var component = getTranslationOrText(ctx,1);
   var classRegex = /class='.*'/
   var styleRegex = /style='.*'/
+  var hrefRegex = /href='.*'/
   // Look which component it is created
   console.log("ATRIBUTES", attributes)
   console.log("COMPONENT", component)
@@ -189,8 +190,9 @@ HTMLeinfachListener.prototype.exitCreate_specification = function(ctx) {
       break;
     // <a href="https://www.w3schools.com">This is a link</a>
     case "link":
-      translation = "<a" + attributes + ">Click here!</a>";
-      break;
+      var href = attributes.match(hrefRegex)
+      translation = "<a target='_blank' "+ href[0] + attributes.replace(hrefRegex, '') + "></a>";
+      break; 
     // <a href="https://example.com/" class="btn">Go ahead...</a>
     case "hero":
       var styles = attributes.match(styleRegex)
