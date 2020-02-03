@@ -39,16 +39,25 @@ function escape_special_characters(input){
         apostrophe_found = true;
       }
 
-      if(!apostrophe_found && input[j] == '\'' && input[j+1] == '}' && input[j+2] == "\""){
+
+      if(!apostrophe_found && input[i] == '\'' && input[i+1] == '}' && input[i+2] == ";"){
+        console.log("verga")
         apostrophe_position = i;
         apostrophe_found = true;
       }
 
-      if(!apostrophe_found && input[j] == '\'' && input[j+1] == '}'){
+
+      if(!apostrophe_found && input[i] == '\'' && input[i+1] == '}' && input[i+2] == "\""){
         apostrophe_position = i;
         apostrophe_found = true;
       }
-      if(apostrophe_found && (input[i] == ',')){
+
+
+      if(!apostrophe_found && input[i] == '\'' && input[i+1] == '}'){
+        apostrophe_position = i;
+        apostrophe_found = true;
+      }
+      if(apostrophe_found && (input[i] == ',' || input[i] == '}')){
         if(i == input.length) i -= 2
         apostrophe_found = false;
         for(var j = apostrophe_position; j < i-1; j++)
