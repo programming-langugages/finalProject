@@ -4,7 +4,7 @@ const antlr4 = require('antlr4/index');
 const EinfachLexer = require('./einfachLexer.js');
 const EinfachParser = require('./einfachParser.js');
 const HtmlEinfachListener = require('./HTMLeinfachListener.js').HTMLeinfachListener;
-// 
+//
 // var express = require('express')
 // var cors = require('cors')
 //
@@ -22,6 +22,60 @@ const HtmlEinfachListener = require('./HTMLeinfachListener.js').HTMLeinfachListe
 //   console.log('CORS-enabled web server listening on port 80')
 // })
 
+String.prototype.splice = function(idx, rem, str) {
+    return this.slice(0, idx) + str + this.slice(idx + Math.abs(rem));
+};
+
+String.prototype.replaceAt=function(index, replacement) {
+    return this.substr(0, index) + replacement+ this.substr(index + replacement.length);
+}
+
+function escape_special_characters(input){
+    var apostrophe_found = false;
+    for(var i = 0; i <= input.length; i++){
+
+      if(input[i] == '\'' && !apostrophe_found){
+        apostrophe_position = i + 1;
+        apostrophe_found = true;
+      }
+
+      if(!apostrophe_found && input[j] == '\'' && input[j+1] == '}' && input[j+2] == "\""){
+        apostrophe_position = i;
+        apostrophe_found = true;
+      }
+
+      if(!apostrophe_found && input[j] == '\'' && input[j+1] == '}'){
+        apostrophe_position = i;
+        apostrophe_found = true;
+      }
+      if(apostrophe_found && (input[i] == ',')){
+        if(i == input.length) i -= 2
+        apostrophe_found = false;
+        for(var j = apostrophe_position; j <= i-1; j++)
+          if(input[j] == '\''
+            || input[j] == '\"'
+            || input[j] == '\\'){
+              //Replacing for "
+              input = input.replaceAt(j, "\"");
+              //Escaping the character
+              input = input.splice(j, 0, "\\");
+              j++;
+          }
+        if(i == input.length) i += 2
+      }
+    }
+
+    return input;
+}
+
+function invert_and_format_response(array_of_translations){
+  var final_response = ""
+  array_of_translations.reverse();
+  for(var i = 0; i < array_of_translations.length; i++){
+    final_response += array_of_translations[i];
+  }
+  return final_response;
+}
 let fs = require('fs');
 const qs = require('querystring');
 http.createServer((req, res) => {
@@ -51,13 +105,17 @@ http.createServer((req, res) => {
 
 
      //const data = qs.parse(chunk.toString());
-    var data = JSON.parse(chunk.toString());
+    var data = JSON.parse(escape_special_characters(chunk.toString()));
 
-    console.log("///// Translating this /////////////////////////////")
-    console.log(data["content"])
-    console.log("///// Translating this ////////////////////////////")
+
     var input = data.content;
-    var nummer = 5;
+
+    input = escape_special_characters(input)
+    console.log("///// Translating this /////////////////////////////")
+    console.log(input)
+    console.log("///// Translating this ////////////////////////////")
+    //create button = { function='alert(\"Ibis!\")', text='Button uwu'}
+
 
    //res.write('<html><head><meta charset="UTF-8"/></head><body>');
 
@@ -67,12 +125,15 @@ http.createServer((req, res) => {
    var tokens  = new antlr4.CommonTokenStream(lexer);
    var parser = new EinfachParser.einfachParser(tokens);
    parser.buildParseTrees = true;
-   var tree = parser.einfach_program();
-   var einfach_program = new HtmlEinfachListener(res,nummer);
-   antlr4.tree.ParseTreeWalker.DEFAULT.walk(einfach_program, tree);
+   var tree = parser.einfach_program_mains();
+   var einfach_program_mains = new HtmlEinfachListener(res);
+   antlr4.tree.ParseTreeWalker.DEFAULT.walk(einfach_program_mains, tree);
 
    //res.write('</body></html>');
 
+   var final_response = "{\"translation\": \""  + invert_and_format_response(einfach_program_mains.text_json) + "\"}";
+   console.log("\n\n///////////////////////Final text\n " + final_response)
+   res.write(final_response);
    res.end();
       });
 }).listen(1337);

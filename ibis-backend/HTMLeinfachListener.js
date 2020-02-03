@@ -6,12 +6,12 @@ const EinfachParser = require('./einfachParser.js');
 const EinfachListener = require('./einfachListener.js').einfachListener;
 
 // This class defines a complete listener for a parse tree produced by einfachParser.
-function HTMLeinfachListener(res, nummer) {
+function HTMLeinfachListener(res) {
 
   this.Res = res;
-  this.Nummer = nummer;
+  this.text_json = new Array();
   EinfachListener.call(this); // inherit default listener
-  return this;
+  return ;
 	//antlr4.tree.ParseTreeListener.call(this);
 	//return this;
 }
@@ -43,6 +43,8 @@ function getTextOfChildrenModified(ctx, fromRule, untilRule){
 };
 
 function getTranslationOrText(ctx, index){
+
+
     try {
   var result = "";
   //if(!ctx.chilren || ctx.children == null) {console.log("fallo en " + index); return result;}
@@ -52,7 +54,7 @@ function getTranslationOrText(ctx, index){
       result += ctx.children[index].getText();
   return result;
   }catch(error) {
-    console.error(error);
+    //console.error(error);
     return "";
     // expected output: ReferenceError: nonExistentFunction is not defined
     // Note - error messages will vary depending on browser
@@ -70,21 +72,54 @@ function getWidthAndHeight(size){
 
 HTMLeinfachListener.prototype.constructor = HTMLeinfachListener;
 
+
+
+
+
+// Enter a parse tree produced by einfachParser#einfach_program_mains.
+HTMLeinfachListener.prototype.enterEinfach_program_mains = function(ctx) {
+};
+
+// Exit a parse tree produced by einfachParser#einfach_program_mains.
+HTMLeinfachListener.prototype.exitEinfach_program_mains = function(ctx) {
+
+  var text = getTextOfChildrenModified(ctx);
+
+  text += "\n"
+  text = text.replace(/\"/g, "\'");
+  text = text.replace(/\\n/g, "\\\\n")
+  text = text.replace(/(?:\r\n|\r|\n)/g, '\\n');
+  this.text_json.push(text.toString())
+  console.log("Adding this to the final translation:    " + text.toString());
+//  if(getTranslationOrText(ctx,1) == "<EOF>")
+
+};
+
+
 // Enter a parse tree produced by einfachParser#einfach_program.
 HTMLeinfachListener.prototype.enterEinfach_program = function(ctx) {
+
+
 };
 
 // Exit a parse tree produced by einfachParser#einfach_program.
 HTMLeinfachListener.prototype.exitEinfach_program = function(ctx) {
-
-  var text = getTextOfChildrenModified(ctx);
-  console.log("Final text:    " + text);
-  text = text.replace(/\"/g, "\'");
-  text = text.replace(/\\n/g, "\\\\n")
-  text = text.replace(/(?:\r\n|\r|\n)/g, '\\n');
-  text_json = "{\"translation\": \""  + text.toString() + "\"}"
-  this.Res.write(text_json);
+    ctx.text = ""
 };
+
+
+// Enter a parse tree produced by einfachParser#einfach_program_main.
+HTMLeinfachListener.prototype.enterEinfach_program_main = function(ctx) {
+};
+
+// Exit a parse tree produced by einfachParser#einfach_program_main.
+HTMLeinfachListener.prototype.exitEinfach_program_main = function(ctx) {
+
+    ctx.text = getTextOfChildrenModified(ctx);
+};
+
+
+
 
 
 // Enter a parse tree produced by einfachParser#insert_specification.
@@ -98,7 +133,6 @@ HTMLeinfachListener.prototype.exitInsert_specification = function(ctx) {
   switch(getTranslationOrText(ctx,1)){
     case "html":
       ctx.text = getTranslationOrText(ctx,3);
-      console.log("html")
       break;
     case "css":
       ctx.text = "<style> " + getTranslationOrText(ctx,3) + " </style>"
@@ -148,6 +182,13 @@ HTMLeinfachListener.prototype.exitCreate_specification = function(ctx) {
     // <a href="https://example.com/" class="btn">Go ahead...</a>
     case "hero":
       translation = hero_template_part_1 +  attributes + hero_template_part_3 ;
+      break;
+    // <button type="button" onclick="alert('Hello world!')">Click Me!</button>
+    //4: FUNCTION
+    //5: TEXT
+    case "button":
+      translation = "<button type='button' onclick=' " + attributes + "</button>";
+      break;
   }
   ctx.text = translation;
 
@@ -188,6 +229,10 @@ HTMLeinfachListener.prototype.exitParameters = function(ctx) {
     // <a href="https://example.com/" class="btn">Go ahead...</a>
     case "herourl":
       translation = "<a href='" + information_parameter.replace(/\'/g, '') + "' class='btn'>Go ahead!</a>";
+      break;
+    case "function":
+
+      translation = information_parameter.replace(/\'/g, '') + "'"
       break;
 
   }
@@ -273,12 +318,10 @@ HTMLeinfachListener.prototype.exitCommand_specification = function(ctx) {
   if(number_of_times < 0)  number_of_times = 1;
   switch (getTranslationOrText(ctx,0)) {
     case "newline":
-        for(var i = 0; i < number_of_times; i++) translation += "<br> </<br>\n";
+        for(var i = 0; i < number_of_times; i++) translation += "<br> </<br>";
       break;
     case "p":
       translation += "<p>"
-      console.log(ctx.children.length);
-      console.log(getTranslationOrText(ctx,1))
       for(var i = 1; i < ctx.children.length; i++) translation += " " + getTranslationOrText(ctx,i) + " ";
       translation += "</p>"
   }

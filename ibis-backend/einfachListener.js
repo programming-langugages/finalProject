@@ -11,12 +11,30 @@ function einfachListener() {
 einfachListener.prototype = Object.create(antlr4.tree.ParseTreeListener.prototype);
 einfachListener.prototype.constructor = einfachListener;
 
+// Enter a parse tree produced by einfachParser#einfach_program_mains.
+einfachListener.prototype.enterEinfach_program_mains = function(ctx) {
+};
+
+// Exit a parse tree produced by einfachParser#einfach_program_mains.
+einfachListener.prototype.exitEinfach_program_mains = function(ctx) {
+};
+
+
 // Enter a parse tree produced by einfachParser#einfach_program.
 einfachListener.prototype.enterEinfach_program = function(ctx) {
 };
 
 // Exit a parse tree produced by einfachParser#einfach_program.
 einfachListener.prototype.exitEinfach_program = function(ctx) {
+};
+
+
+// Enter a parse tree produced by einfachParser#einfach_program_main.
+einfachListener.prototype.enterEinfach_program_main = function(ctx) {
+};
+
+// Exit a parse tree produced by einfachParser#einfach_program_main.
+einfachListener.prototype.exitEinfach_program_main = function(ctx) {
 };
 
 
@@ -83,24 +101,6 @@ einfachListener.prototype.exitComponent = function(ctx) {
 };
 
 
-// Enter a parse tree produced by einfachParser#buttons.
-einfachListener.prototype.enterButtons = function(ctx) {
-};
-
-// Exit a parse tree produced by einfachParser#buttons.
-einfachListener.prototype.exitButtons = function(ctx) {
-};
-
-
-// Enter a parse tree produced by einfachParser#button.
-einfachListener.prototype.enterButton = function(ctx) {
-};
-
-// Exit a parse tree produced by einfachParser#button.
-einfachListener.prototype.exitButton = function(ctx) {
-};
-
-
 // Enter a parse tree produced by einfachParser#strings.
 einfachListener.prototype.enterStrings = function(ctx) {
 };
@@ -146,6 +146,15 @@ einfachListener.prototype.exitParameter = function(ctx) {
 };
 
 
+// Enter a parse tree produced by einfachParser#parameter_specification.
+einfachListener.prototype.enterParameter_specification = function(ctx) {
+};
+
+// Exit a parse tree produced by einfachParser#parameter_specification.
+einfachListener.prototype.exitParameter_specification = function(ctx) {
+};
+
+
 // Enter a parse tree produced by einfachParser#attribute_type.
 einfachListener.prototype.enterAttribute_type = function(ctx) {
 };
@@ -179,15 +188,6 @@ einfachListener.prototype.enterUrl = function(ctx) {
 
 // Exit a parse tree produced by einfachParser#url.
 einfachListener.prototype.exitUrl = function(ctx) {
-};
-
-
-// Enter a parse tree produced by einfachParser#parameter_specification.
-einfachListener.prototype.enterParameter_specification = function(ctx) {
-};
-
-// Exit a parse tree produced by einfachParser#parameter_specification.
-einfachListener.prototype.exitParameter_specification = function(ctx) {
 };
 
 

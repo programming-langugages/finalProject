@@ -19,6 +19,7 @@ CSS: 'css';
 JS: 'js';
 IMAGE: 'image';
 URL: 'url';
+BUTTON: 'button';
 BOOTSTRAP: 'bootstrap';
 ICONS: 'icons';
 SIZE: 'size';
@@ -26,6 +27,8 @@ IMPORT: 'import';
 NEWLINE: 'newline' | 'nl';
 PARAGRAPH: 'p';
 LINK: 'link';
+TEXT: 'text';
+FUNCTION: 'function';
 HERONAME: 'heroname';
 TK_NUM:  [0-9]+;
 STRING: [a-zA-Z0-9]+;
@@ -76,9 +79,18 @@ WS: [\t\r\n]+ -> skip;
 
 /*
  * Parser Rules
+ * ALWAYS REMEMBER TO PUT THE EXIT RULE WITH EOF NOT WITH EPSILON
  */
 
-einfach_program :  create_specification | copy_specification | insert_specification | tag
+
+
+ einfach_program_mains : einfach_program_main einfach_program;
+ einfach_program : EOF | TK_PUNTO_Y_COMA einfach_program_mains ;
+
+
+
+
+einfach_program_main :  create_specification | copy_specification | insert_specification | tag
  | import_specification | command_specification;
 import_specification: IMPORT import_types;
 
@@ -92,17 +104,16 @@ copy_specification: COPY tag FROM url;
 tag:  | TK_MENORQUE strings TK_MAYORQUE strings TK_MENORQUE TK_DIV strings TK_MAYORQUE
 | STRING;
 
-component : IMAGE | HERO | FOOTER | HEADER | buttons | LINK;
-buttons: TK_COR_IZQ button TK_COR_DER |  ;
-button: buttons | ;
+component : IMAGE | HERO | FOOTER | HEADER | LINK | BUTTON;
 
 strings : STRING string;
 string : TK_COMA strings | strings | ;
 
 attribute: attribute_type TK_DOS_PUNTOS value;
 
-parameters : parameter_specification TK_IGUAL HTML_CODE parameter;
+parameters : parameter_specification TK_IGUAL HTML_CODE parameter | ;
 parameter : TK_COMA parameters | ;
+parameter_specification: URL | SIZE  | HERONAME | FUNCTION | TEXT;
 
 
 attribute_type: COLOR;
@@ -110,7 +121,7 @@ name_tag: H1;
 value: STRING;
 url: STRING;
 
-parameter_specification: URL | SIZE  | text | HERONAME ;
+
 
 text: strings;
 import_types: BOOTSTRAP | ICONS;
