@@ -173,7 +173,7 @@ HTMLeinfachListener.prototype.exitCreate_specification = function(ctx) {
   switch (component) {
     //<img src="blablabla" style="width: 200px; height: 300px">
     case "image":
-      translation = "<img " + attributes + " alt='Image generated with Ibis'>";
+      translation = "<div><img " + attributes + " alt='Image generated with Ibis'></div>";
       break;
     // <a href="https://www.w3schools.com">This is a link</a>
     case "link":
@@ -205,35 +205,36 @@ HTMLeinfachListener.prototype.exitParameters = function(ctx) {
 
  //parameter_specification = parameter moreparameter
   var type_parameter = getTranslationOrText(ctx,0)
-  var information_parameter = getTranslationOrText(ctx,2)
+  var information_parameter = getTranslationOrText(ctx,2).replace(/\'/g, '')
   var translation;
 
   var hero_template_part_2 =`<h2>Look at this website and bask in its amazing glory!</h2>
             `
   switch(type_parameter){
     case "url":
-      translation = "src='" + information_parameter.replace(/\'/g, '') + "' ";
+      translation = "src='" + information_parameter + "' ";
       break;
     case "link":
-      translation = "href='" + information_parameter.replace(/\'/g, '') + "' ";
+      translation = "href='" + information_parameter + "' ";
       break;
     case "size":
       translation = "style\=" + getWidthAndHeight(information_parameter) + "' ";
       break;
     case "text":
-      translation = ">" + information_parameter.replace(/\'/g, '')  ;
+      translation = ">" + information_parameter  ;
       break;
     case "heroname":
-      translation = "<h1> " + information_parameter.replace(/\'/g, '') + "</h1>\n" + hero_template_part_2
+      translation = "<h1> " + information_parameter + "</h1>\n" + hero_template_part_2
       break;
     // <a href="https://example.com/" class="btn">Go ahead...</a>
     case "herourl":
-      translation = "<a href='" + information_parameter.replace(/\'/g, '') + "' class='btn'>Go ahead!</a>";
+      translation = "<a href='" + information_parameter + "' class='btn'>Go ahead!</a>";
       break;
     case "function":
-
-      translation = information_parameter.replace(/\'/g, '') + "'"
+      translation = information_parameter + "'"
       break;
+    case "alignment":
+      translation = "<class = '" + information_parameter + "";
 
   }
   translation +=  getTranslationOrText(ctx,3)

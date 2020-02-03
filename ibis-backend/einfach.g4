@@ -30,6 +30,8 @@ LINK: 'link';
 TEXT: 'text';
 FUNCTION: 'function';
 HERONAME: 'heroname';
+HEROURL: 'herourl';
+ALIGNMENT: 'alignment';
 TK_NUM:  [0-9]+;
 STRING: [a-zA-Z0-9]+;
 TK_DOS_PUNTOS: ':';
@@ -95,6 +97,9 @@ einfach_program_main :  create_specification | copy_specification | insert_speci
 import_specification: IMPORT import_types;
 
 create_specification: CREATE component TK_IGUAL TK_LLAVE_IZQ parameters TK_LLAVE_DER;
+component : IMAGE | HERO | FOOTER | HEADER | LINK | BUTTON;
+parameter_specification: URL | SIZE  | HERONAME | FUNCTION | TEXT | ALIGNMENT | HEROURL;
+
 
 insert_specification: INSERT insert_type TK_IGUAL strings;
 insert_type: HTML | CSS | JS | LINK;
@@ -104,7 +109,7 @@ copy_specification: COPY tag FROM url;
 tag:  | TK_MENORQUE strings TK_MAYORQUE strings TK_MENORQUE TK_DIV strings TK_MAYORQUE
 | STRING;
 
-component : IMAGE | HERO | FOOTER | HEADER | LINK | BUTTON;
+
 
 strings : STRING string;
 string : TK_COMA strings | strings | ;
@@ -113,7 +118,7 @@ attribute: attribute_type TK_DOS_PUNTOS value;
 
 parameters : parameter_specification TK_IGUAL HTML_CODE parameter | ;
 parameter : TK_COMA parameters | ;
-parameter_specification: URL | SIZE  | HERONAME | FUNCTION | TEXT;
+
 
 
 attribute_type: COLOR;
