@@ -66,7 +66,9 @@ function getWidthAndHeight(size){
   var splitted = size.replace(/\'/g, '').split("x");
   var width = splitted[0];
   var height = splitted[1];
-  var attribute = "'width:" + width.toString() + "px;" + "height:" + height.toString() + "px";
+  var attribute;
+  if(!height) attribute = "font-size:" + width.toString() + "px";
+  else attribute = "'width:" + width.toString() + "px;" + "height:" + height.toString() + "px";
   return attribute;
 }
 
@@ -189,6 +191,10 @@ HTMLeinfachListener.prototype.exitCreate_specification = function(ctx) {
     case "button":
       translation = "<button type='button' onclick=' " + attributes + "</button>";
       break;
+    //create paragraph = {size: '15'. color: '#ffff', text:"bla bla bla"}
+    //<p style="font-size:15px; color: #fff">bla bla bla</p>
+    case "paragraph":
+      translation = "<p " + attributes + "</p"
   }
   ctx.text = translation;
 
@@ -219,6 +225,9 @@ HTMLeinfachListener.prototype.exitParameters = function(ctx) {
       break;
     case "size":
       translation = "style\=" + getWidthAndHeight(information_parameter) + "' ";
+      break;
+    case "color":
+      translation = "style\=\'color:" + information_parameter + "' ";
       break;
     case "text":
       translation = ">" + information_parameter  ;

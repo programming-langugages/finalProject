@@ -26,6 +26,7 @@ SIZE: 'size';
 IMPORT: 'import';
 NEWLINE: 'newline' | 'nl';
 PARAGRAPH: 'p';
+PARAGRAPH_LONG: 'paragraph';
 LINK: 'link';
 TEXT: 'text';
 FUNCTION: 'function';
@@ -97,8 +98,8 @@ einfach_program_main :  create_specification | copy_specification | insert_speci
 import_specification: IMPORT import_types;
 
 create_specification: CREATE component TK_IGUAL TK_LLAVE_IZQ parameters TK_LLAVE_DER;
-component : IMAGE | HERO | FOOTER | HEADER | LINK | BUTTON;
-parameter_specification: URL | SIZE  | HERONAME | FUNCTION | TEXT | ALIGNMENT | HEROURL;
+component : IMAGE | HERO | FOOTER | HEADER | LINK | BUTTON | PARAGRAPH | PARAGRAPH_LONG;
+parameter_specification: URL | SIZE  | HERONAME | FUNCTION | TEXT | ALIGNMENT | HEROURL | COLOR;
 
 
 insert_specification: INSERT insert_type TK_IGUAL strings;

@@ -6,7 +6,7 @@ var grammarFileName = "einfach.g4";
 
 
 var serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964",
-    "\u0003?\u009a\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004\t",
+    "\u0003B\u009a\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004\t",
     "\u0004\u0004\u0005\t\u0005\u0004\u0006\t\u0006\u0004\u0007\t\u0007\u0004",
     "\b\t\b\u0004\t\t\t\u0004\n\t\n\u0004\u000b\t\u000b\u0004\f\t\f\u0004",
     "\r\t\r\u0004\u000e\t\u000e\u0004\u000f\t\u000f\u0004\u0010\t\u0010\u0004",
@@ -17,79 +17,79 @@ var serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964",
     "\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0005\u0004",
     "A\n\u0004\u0003\u0005\u0003\u0005\u0003\u0005\u0003\u0006\u0003\u0006",
     "\u0003\u0006\u0003\u0006\u0003\u0006\u0003\u0006\u0003\u0006\u0003\u0007",
-    "\u0003\u0007\u0003\u0007\u0003\u0007\u0003\u0007\u0003\b\u0003\b\u0003",
-    "\t\u0003\t\u0003\t\u0003\t\u0003\t\u0003\n\u0003\n\u0003\n\u0003\n\u0003",
-    "\n\u0003\n\u0003\n\u0003\n\u0003\n\u0003\n\u0003\n\u0005\nd\n\n\u0003",
-    "\u000b\u0003\u000b\u0003\f\u0003\f\u0003\f\u0003\r\u0003\r\u0003\r\u0003",
-    "\r\u0005\ro\n\r\u0003\u000e\u0003\u000e\u0003\u000e\u0003\u000e\u0003",
-    "\u000f\u0003\u000f\u0003\u000f\u0003\u000f\u0003\u000f\u0003\u000f\u0005",
-    "\u000f{\n\u000f\u0003\u0010\u0003\u0010\u0003\u0010\u0005\u0010\u0080",
-    "\n\u0010\u0003\u0011\u0003\u0011\u0003\u0012\u0003\u0012\u0003\u0013",
-    "\u0003\u0013\u0003\u0014\u0003\u0014\u0003\u0015\u0003\u0015\u0003\u0016",
-    "\u0003\u0016\u0003\u0017\u0003\u0017\u0003\u0018\u0003\u0018\u0003\u0018",
-    "\u0003\u0018\u0005\u0018\u0094\n\u0018\u0003\u0019\u0003\u0019\u0005",
-    "\u0019\u0098\n\u0019\u0003\u0019\u0002\u0002\u001a\u0002\u0004\u0006",
-    "\b\n\f\u000e\u0010\u0012\u0014\u0016\u0018\u001a\u001c\u001e \"$&(*",
-    ",.0\u0002\u0006\u0005\u0002\u0006\u0006\r\u000e\u0018\u0018\u0006\u0002",
-    "\t\u000b\u000f\u000f\u0011\u0011\u0018\u0018\u0005\u0002\u0010\u0010",
-    "\u0014\u0014\u0019\u001b\u0003\u0002\u0012\u0013\u0002\u008f\u00022",
-    "\u0003\u0002\u0002\u0002\u00048\u0003\u0002\u0002\u0002\u0006@\u0003",
-    "\u0002\u0002\u0002\bB\u0003\u0002\u0002\u0002\nE\u0003\u0002\u0002\u0002",
-    "\fL\u0003\u0002\u0002\u0002\u000eQ\u0003\u0002\u0002\u0002\u0010S\u0003",
-    "\u0002\u0002\u0002\u0012c\u0003\u0002\u0002\u0002\u0014e\u0003\u0002",
-    "\u0002\u0002\u0016g\u0003\u0002\u0002\u0002\u0018n\u0003\u0002\u0002",
-    "\u0002\u001ap\u0003\u0002\u0002\u0002\u001cz\u0003\u0002\u0002\u0002",
-    "\u001e\u007f\u0003\u0002\u0002\u0002 \u0081\u0003\u0002\u0002\u0002",
-    "\"\u0083\u0003\u0002\u0002\u0002$\u0085\u0003\u0002\u0002\u0002&\u0087",
-    "\u0003\u0002\u0002\u0002(\u0089\u0003\u0002\u0002\u0002*\u008b\u0003",
-    "\u0002\u0002\u0002,\u008d\u0003\u0002\u0002\u0002.\u0093\u0003\u0002",
-    "\u0002\u00020\u0097\u0003\u0002\u0002\u000223\u0005\u0006\u0004\u0002",
-    "34\u0005\u0004\u0003\u00024\u0003\u0003\u0002\u0002\u000259\u0007\u0002",
-    "\u0002\u000367\u0007.\u0002\u000279\u0005\u0002\u0002\u000285\u0003",
-    "\u0002\u0002\u000286\u0003\u0002\u0002\u00029\u0005\u0003\u0002\u0002",
-    "\u0002:A\u0005\n\u0006\u0002;A\u0005\u0010\t\u0002<A\u0005\f\u0007\u0002",
-    "=A\u0005\u0012\n\u0002>A\u0005\b\u0005\u0002?A\u0005.\u0018\u0002@:",
-    "\u0003\u0002\u0002\u0002@;\u0003\u0002\u0002\u0002@<\u0003\u0002\u0002",
-    "\u0002@=\u0003\u0002\u0002\u0002@>\u0003\u0002\u0002\u0002@?\u0003\u0002",
-    "\u0002\u0002A\u0007\u0003\u0002\u0002\u0002BC\u0007\u0015\u0002\u0002",
-    "CD\u0005,\u0017\u0002D\t\u0003\u0002\u0002\u0002EF\u0007\u0003\u0002",
-    "\u0002FG\u0005\u0014\u000b\u0002GH\u0007\'\u0002\u0002HI\u0007:\u0002",
-    "\u0002IJ\u0005\u001c\u000f\u0002JK\u0007;\u0002\u0002K\u000b\u0003\u0002",
-    "\u0002\u0002LM\u0007\u0007\u0002\u0002MN\u0005\u000e\b\u0002NO\u0007",
-    "\'\u0002\u0002OP\u0005\u0016\f\u0002P\r\u0003\u0002\u0002\u0002QR\t",
-    "\u0002\u0002\u0002R\u000f\u0003\u0002\u0002\u0002ST\u0007\u0004\u0002",
-    "\u0002TU\u0005\u0012\n\u0002UV\u0007\b\u0002\u0002VW\u0005(\u0015\u0002",
-    "W\u0011\u0003\u0002\u0002\u0002Xd\u0003\u0002\u0002\u0002YZ\u0007(\u0002",
-    "\u0002Z[\u0005\u0016\f\u0002[\\\u0007)\u0002\u0002\\]\u0005\u0016\f",
-    "\u0002]^\u0007(\u0002\u0002^_\u00074\u0002\u0002_`\u0005\u0016\f\u0002",
-    "`a\u0007)\u0002\u0002ad\u0003\u0002\u0002\u0002bd\u0007\u001d\u0002",
-    "\u0002cX\u0003\u0002\u0002\u0002cY\u0003\u0002\u0002\u0002cb\u0003\u0002",
-    "\u0002\u0002d\u0013\u0003\u0002\u0002\u0002ef\t\u0003\u0002\u0002f\u0015",
-    "\u0003\u0002\u0002\u0002gh\u0007\u001d\u0002\u0002hi\u0005\u0018\r\u0002",
-    "i\u0017\u0003\u0002\u0002\u0002jk\u0007\"\u0002\u0002ko\u0005\u0016",
-    "\f\u0002lo\u0005\u0016\f\u0002mo\u0003\u0002\u0002\u0002nj\u0003\u0002",
-    "\u0002\u0002nl\u0003\u0002\u0002\u0002nm\u0003\u0002\u0002\u0002o\u0019",
-    "\u0003\u0002\u0002\u0002pq\u0005\"\u0012\u0002qr\u0007\u001e\u0002\u0002",
-    "rs\u0005&\u0014\u0002s\u001b\u0003\u0002\u0002\u0002tu\u0005 \u0011",
-    "\u0002uv\u0007\'\u0002\u0002vw\u0007=\u0002\u0002wx\u0005\u001e\u0010",
-    "\u0002x{\u0003\u0002\u0002\u0002y{\u0003\u0002\u0002\u0002zt\u0003\u0002",
-    "\u0002\u0002zy\u0003\u0002\u0002\u0002{\u001d\u0003\u0002\u0002\u0002",
-    "|}\u0007\"\u0002\u0002}\u0080\u0005\u001c\u000f\u0002~\u0080\u0003\u0002",
-    "\u0002\u0002\u007f|\u0003\u0002\u0002\u0002\u007f~\u0003\u0002\u0002",
-    "\u0002\u0080\u001f\u0003\u0002\u0002\u0002\u0081\u0082\t\u0004\u0002",
-    "\u0002\u0082!\u0003\u0002\u0002\u0002\u0083\u0084\u0007\f\u0002\u0002",
-    "\u0084#\u0003\u0002\u0002\u0002\u0085\u0086\u0007\u0005\u0002\u0002",
-    "\u0086%\u0003\u0002\u0002\u0002\u0087\u0088\u0007\u001d\u0002\u0002",
-    "\u0088\'\u0003\u0002\u0002\u0002\u0089\u008a\u0007\u001d\u0002\u0002",
-    "\u008a)\u0003\u0002\u0002\u0002\u008b\u008c\u0005\u0016\f\u0002\u008c",
-    "+\u0003\u0002\u0002\u0002\u008d\u008e\t\u0005\u0002\u0002\u008e-\u0003",
-    "\u0002\u0002\u0002\u008f\u0090\u0007\u0016\u0002\u0002\u0090\u0094\u0005",
-    "0\u0019\u0002\u0091\u0092\u0007\u0017\u0002\u0002\u0092\u0094\u0005",
-    "\u0016\f\u0002\u0093\u008f\u0003\u0002\u0002\u0002\u0093\u0091\u0003",
-    "\u0002\u0002\u0002\u0094/\u0003\u0002\u0002\u0002\u0095\u0098\u0007",
-    "\u001c\u0002\u0002\u0096\u0098\u0003\u0002\u0002\u0002\u0097\u0095\u0003",
-    "\u0002\u0002\u0002\u0097\u0096\u0003\u0002\u0002\u0002\u00981\u0003",
-    "\u0002\u0002\u0002\n8@cnz\u007f\u0093\u0097"].join("");
+    "\u0003\u0007\u0003\b\u0003\b\u0003\t\u0003\t\u0003\t\u0003\t\u0003\t",
+    "\u0003\n\u0003\n\u0003\u000b\u0003\u000b\u0003\u000b\u0003\u000b\u0003",
+    "\u000b\u0003\f\u0003\f\u0003\f\u0003\f\u0003\f\u0003\f\u0003\f\u0003",
+    "\f\u0003\f\u0003\f\u0003\f\u0005\fh\n\f\u0003\r\u0003\r\u0003\r\u0003",
+    "\u000e\u0003\u000e\u0003\u000e\u0003\u000e\u0005\u000eq\n\u000e\u0003",
+    "\u000f\u0003\u000f\u0003\u000f\u0003\u000f\u0003\u0010\u0003\u0010\u0003",
+    "\u0010\u0003\u0010\u0003\u0010\u0003\u0010\u0005\u0010}\n\u0010\u0003",
+    "\u0011\u0003\u0011\u0003\u0011\u0005\u0011\u0082\n\u0011\u0003\u0012",
+    "\u0003\u0012\u0003\u0013\u0003\u0013\u0003\u0014\u0003\u0014\u0003\u0015",
+    "\u0003\u0015\u0003\u0016\u0003\u0016\u0003\u0017\u0003\u0017\u0003\u0018",
+    "\u0003\u0018\u0003\u0018\u0003\u0018\u0005\u0018\u0094\n\u0018\u0003",
+    "\u0019\u0003\u0019\u0005\u0019\u0098\n\u0019\u0003\u0019\u0002\u0002",
+    "\u001a\u0002\u0004\u0006\b\n\f\u000e\u0010\u0012\u0014\u0016\u0018\u001a",
+    "\u001c\u001e \"$&(*,.0\u0002\u0006\u0006\u0002\t\u000b\u000f\u000f\u0011",
+    "\u0011\u0017\u0019\u0006\u0002\f\f\u0010\u0010\u0014\u0014\u001a\u001e",
+    "\u0005\u0002\u0006\u0006\r\u000e\u0019\u0019\u0003\u0002\u0012\u0013",
+    "\u0002\u008f\u00022\u0003\u0002\u0002\u0002\u00048\u0003\u0002\u0002",
+    "\u0002\u0006@\u0003\u0002\u0002\u0002\bB\u0003\u0002\u0002\u0002\nE",
+    "\u0003\u0002\u0002\u0002\fL\u0003\u0002\u0002\u0002\u000eN\u0003\u0002",
+    "\u0002\u0002\u0010P\u0003\u0002\u0002\u0002\u0012U\u0003\u0002\u0002",
+    "\u0002\u0014W\u0003\u0002\u0002\u0002\u0016g\u0003\u0002\u0002\u0002",
+    "\u0018i\u0003\u0002\u0002\u0002\u001ap\u0003\u0002\u0002\u0002\u001c",
+    "r\u0003\u0002\u0002\u0002\u001e|\u0003\u0002\u0002\u0002 \u0081\u0003",
+    "\u0002\u0002\u0002\"\u0083\u0003\u0002\u0002\u0002$\u0085\u0003\u0002",
+    "\u0002\u0002&\u0087\u0003\u0002\u0002\u0002(\u0089\u0003\u0002\u0002",
+    "\u0002*\u008b\u0003\u0002\u0002\u0002,\u008d\u0003\u0002\u0002\u0002",
+    ".\u0093\u0003\u0002\u0002\u00020\u0097\u0003\u0002\u0002\u000223\u0005",
+    "\u0006\u0004\u000234\u0005\u0004\u0003\u00024\u0003\u0003\u0002\u0002",
+    "\u000259\u0007\u0002\u0002\u000367\u00071\u0002\u000279\u0005\u0002",
+    "\u0002\u000285\u0003\u0002\u0002\u000286\u0003\u0002\u0002\u00029\u0005",
+    "\u0003\u0002\u0002\u0002:A\u0005\n\u0006\u0002;A\u0005\u0014\u000b\u0002",
+    "<A\u0005\u0010\t\u0002=A\u0005\u0016\f\u0002>A\u0005\b\u0005\u0002?",
+    "A\u0005.\u0018\u0002@:\u0003\u0002\u0002\u0002@;\u0003\u0002\u0002\u0002",
+    "@<\u0003\u0002\u0002\u0002@=\u0003\u0002\u0002\u0002@>\u0003\u0002\u0002",
+    "\u0002@?\u0003\u0002\u0002\u0002A\u0007\u0003\u0002\u0002\u0002BC\u0007",
+    "\u0015\u0002\u0002CD\u0005,\u0017\u0002D\t\u0003\u0002\u0002\u0002E",
+    "F\u0007\u0003\u0002\u0002FG\u0005\f\u0007\u0002GH\u0007*\u0002\u0002",
+    "HI\u0007=\u0002\u0002IJ\u0005\u001e\u0010\u0002JK\u0007>\u0002\u0002",
+    "K\u000b\u0003\u0002\u0002\u0002LM\t\u0002\u0002\u0002M\r\u0003\u0002",
+    "\u0002\u0002NO\t\u0003\u0002\u0002O\u000f\u0003\u0002\u0002\u0002PQ",
+    "\u0007\u0007\u0002\u0002QR\u0005\u0012\n\u0002RS\u0007*\u0002\u0002",
+    "ST\u0005\u0018\r\u0002T\u0011\u0003\u0002\u0002\u0002UV\t\u0004\u0002",
+    "\u0002V\u0013\u0003\u0002\u0002\u0002WX\u0007\u0004\u0002\u0002XY\u0005",
+    "\u0016\f\u0002YZ\u0007\b\u0002\u0002Z[\u0005(\u0015\u0002[\u0015\u0003",
+    "\u0002\u0002\u0002\\h\u0003\u0002\u0002\u0002]^\u0007+\u0002\u0002^",
+    "_\u0005\u0018\r\u0002_`\u0007,\u0002\u0002`a\u0005\u0018\r\u0002ab\u0007",
+    "+\u0002\u0002bc\u00077\u0002\u0002cd\u0005\u0018\r\u0002de\u0007,\u0002",
+    "\u0002eh\u0003\u0002\u0002\u0002fh\u0007 \u0002\u0002g\\\u0003\u0002",
+    "\u0002\u0002g]\u0003\u0002\u0002\u0002gf\u0003\u0002\u0002\u0002h\u0017",
+    "\u0003\u0002\u0002\u0002ij\u0007 \u0002\u0002jk\u0005\u001a\u000e\u0002",
+    "k\u0019\u0003\u0002\u0002\u0002lm\u0007%\u0002\u0002mq\u0005\u0018\r",
+    "\u0002nq\u0005\u0018\r\u0002oq\u0003\u0002\u0002\u0002pl\u0003\u0002",
+    "\u0002\u0002pn\u0003\u0002\u0002\u0002po\u0003\u0002\u0002\u0002q\u001b",
+    "\u0003\u0002\u0002\u0002rs\u0005\"\u0012\u0002st\u0007!\u0002\u0002",
+    "tu\u0005&\u0014\u0002u\u001d\u0003\u0002\u0002\u0002vw\u0005\u000e\b",
+    "\u0002wx\u0007*\u0002\u0002xy\u0007@\u0002\u0002yz\u0005 \u0011\u0002",
+    "z}\u0003\u0002\u0002\u0002{}\u0003\u0002\u0002\u0002|v\u0003\u0002\u0002",
+    "\u0002|{\u0003\u0002\u0002\u0002}\u001f\u0003\u0002\u0002\u0002~\u007f",
+    "\u0007%\u0002\u0002\u007f\u0082\u0005\u001e\u0010\u0002\u0080\u0082",
+    "\u0003\u0002\u0002\u0002\u0081~\u0003\u0002\u0002\u0002\u0081\u0080",
+    "\u0003\u0002\u0002\u0002\u0082!\u0003\u0002\u0002\u0002\u0083\u0084",
+    "\u0007\f\u0002\u0002\u0084#\u0003\u0002\u0002\u0002\u0085\u0086\u0007",
+    "\u0005\u0002\u0002\u0086%\u0003\u0002\u0002\u0002\u0087\u0088\u0007",
+    " \u0002\u0002\u0088\'\u0003\u0002\u0002\u0002\u0089\u008a\u0007 \u0002",
+    "\u0002\u008a)\u0003\u0002\u0002\u0002\u008b\u008c\u0005\u0018\r\u0002",
+    "\u008c+\u0003\u0002\u0002\u0002\u008d\u008e\t\u0005\u0002\u0002\u008e",
+    "-\u0003\u0002\u0002\u0002\u008f\u0090\u0007\u0016\u0002\u0002\u0090",
+    "\u0094\u00050\u0019\u0002\u0091\u0092\u0007\u0017\u0002\u0002\u0092",
+    "\u0094\u0005\u0018\r\u0002\u0093\u008f\u0003\u0002\u0002\u0002\u0093",
+    "\u0091\u0003\u0002\u0002\u0002\u0094/\u0003\u0002\u0002\u0002\u0095",
+    "\u0098\u0007\u001f\u0002\u0002\u0096\u0098\u0003\u0002\u0002\u0002\u0097",
+    "\u0095\u0003\u0002\u0002\u0002\u0097\u0096\u0003\u0002\u0002\u0002\u0098",
+    "1\u0003\u0002\u0002\u0002\n8@gp|\u0081\u0093\u0097"].join("");
 
 
 var atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -101,19 +101,20 @@ var sharedContextCache = new antlr4.PredictionContextCache();
 var literalNames = [ null, "'create'", "'copy'", "'h1'", null, "'insert'", 
                      "'from'", "'hero'", "'footer'", "'header'", "'color'", 
                      "'css'", "'js'", "'image'", "'url'", "'button'", "'bootstrap'", 
-                     "'icons'", "'size'", "'import'", null, "'p'", "'link'", 
-                     "'text'", "'function'", "'heroname'", null, null, "':'", 
-                     "'+:='", "'-:='", "':='", "','", "']'", "'['", "'!='", 
-                     "'->'", "'='", "'<'", "'>'", "'?'", "'*'", "'('", "')'", 
-                     "';'", "'--'", "'-'", "'[]'", "'++'", "'+'", "'/'", 
-                     "'.'", "':=:'", "'...'", "'%'", "'&'", "'{'", "'}'", 
-                     "'''" ];
+                     "'icons'", "'size'", "'import'", null, "'p'", "'paragraph'", 
+                     "'link'", "'text'", "'function'", "'heroname'", "'herourl'", 
+                     "'alignment'", null, null, "':'", "'+:='", "'-:='", 
+                     "':='", "','", "']'", "'['", "'!='", "'->'", "'='", 
+                     "'<'", "'>'", "'?'", "'*'", "'('", "')'", "';'", "'--'", 
+                     "'-'", "'[]'", "'++'", "'+'", "'/'", "'.'", "':=:'", 
+                     "'...'", "'%'", "'&'", "'{'", "'}'", "'''" ];
 
 var symbolicNames = [ null, "CREATE", "COPY", "H1", "HTML", "INSERT", "FROM", 
                       "HERO", "FOOTER", "HEADER", "COLOR", "CSS", "JS", 
                       "IMAGE", "URL", "BUTTON", "BOOTSTRAP", "ICONS", "SIZE", 
-                      "IMPORT", "NEWLINE", "PARAGRAPH", "LINK", "TEXT", 
-                      "FUNCTION", "HERONAME", "TK_NUM", "STRING", "TK_DOS_PUNTOS", 
+                      "IMPORT", "NEWLINE", "PARAGRAPH", "PARAGRAPH_LONG", 
+                      "LINK", "TEXT", "FUNCTION", "HERONAME", "HEROURL", 
+                      "ALIGNMENT", "TK_NUM", "STRING", "TK_DOS_PUNTOS", 
                       "TK_SUMA_ASIG", "TK_MENOS_ASIG", "TK_ASIG", "TK_COMA", 
                       "TK_COR_DER", "TK_COR_IZQ", "TK_DISTINTO", "TK_EJECUTA", 
                       "TK_IGUAL", "TK_MENORQUE", "TK_MAYORQUE", "TK_EXPR_SINC", 
@@ -124,10 +125,10 @@ var symbolicNames = [ null, "CREATE", "COPY", "H1", "HTML", "INSERT", "FROM",
                       "TK_COMILLA", "HTML_CODE", "ANY", "WS" ];
 
 var ruleNames =  [ "einfach_program_mains", "einfach_program", "einfach_program_main", 
-                   "import_specification", "create_specification", "insert_specification", 
-                   "insert_type", "copy_specification", "tag", "component", 
-                   "strings", "string", "attribute", "parameters", "parameter", 
-                   "parameter_specification", "attribute_type", "name_tag", 
+                   "import_specification", "create_specification", "component", 
+                   "parameter_specification", "insert_specification", "insert_type", 
+                   "copy_specification", "tag", "strings", "string", "attribute", 
+                   "parameters", "parameter", "attribute_type", "name_tag", 
                    "value", "url", "text", "import_types", "command_specification", 
                    "optional_number" ];
 
@@ -171,63 +172,66 @@ einfachParser.SIZE = 18;
 einfachParser.IMPORT = 19;
 einfachParser.NEWLINE = 20;
 einfachParser.PARAGRAPH = 21;
-einfachParser.LINK = 22;
-einfachParser.TEXT = 23;
-einfachParser.FUNCTION = 24;
-einfachParser.HERONAME = 25;
-einfachParser.TK_NUM = 26;
-einfachParser.STRING = 27;
-einfachParser.TK_DOS_PUNTOS = 28;
-einfachParser.TK_SUMA_ASIG = 29;
-einfachParser.TK_MENOS_ASIG = 30;
-einfachParser.TK_ASIG = 31;
-einfachParser.TK_COMA = 32;
-einfachParser.TK_COR_DER = 33;
-einfachParser.TK_COR_IZQ = 34;
-einfachParser.TK_DISTINTO = 35;
-einfachParser.TK_EJECUTA = 36;
-einfachParser.TK_IGUAL = 37;
-einfachParser.TK_MENORQUE = 38;
-einfachParser.TK_MAYORQUE = 39;
-einfachParser.TK_EXPR_SINC = 40;
-einfachParser.TK_MULTI = 41;
-einfachParser.TK_PAR_IZQ = 42;
-einfachParser.TK_PAR_DER = 43;
-einfachParser.TK_PUNTO_Y_COMA = 44;
-einfachParser.TK_MENOS_MENOS = 45;
-einfachParser.TK_MENOS = 46;
-einfachParser.TK_SEPARA = 47;
-einfachParser.TK_SUMA_SUMA = 48;
-einfachParser.TK_SUMA = 49;
-einfachParser.TK_DIV = 50;
-einfachParser.TK_PUNTO = 51;
-einfachParser.TK_SWAP = 52;
-einfachParser.TK_TRES_PUNTOS = 53;
-einfachParser.TK_PORCENTAJE = 54;
-einfachParser.TK_AMPERSAND = 55;
-einfachParser.TK_LLAVE_IZQ = 56;
-einfachParser.TK_LLAVE_DER = 57;
-einfachParser.TK_COMILLA = 58;
-einfachParser.HTML_CODE = 59;
-einfachParser.ANY = 60;
-einfachParser.WS = 61;
+einfachParser.PARAGRAPH_LONG = 22;
+einfachParser.LINK = 23;
+einfachParser.TEXT = 24;
+einfachParser.FUNCTION = 25;
+einfachParser.HERONAME = 26;
+einfachParser.HEROURL = 27;
+einfachParser.ALIGNMENT = 28;
+einfachParser.TK_NUM = 29;
+einfachParser.STRING = 30;
+einfachParser.TK_DOS_PUNTOS = 31;
+einfachParser.TK_SUMA_ASIG = 32;
+einfachParser.TK_MENOS_ASIG = 33;
+einfachParser.TK_ASIG = 34;
+einfachParser.TK_COMA = 35;
+einfachParser.TK_COR_DER = 36;
+einfachParser.TK_COR_IZQ = 37;
+einfachParser.TK_DISTINTO = 38;
+einfachParser.TK_EJECUTA = 39;
+einfachParser.TK_IGUAL = 40;
+einfachParser.TK_MENORQUE = 41;
+einfachParser.TK_MAYORQUE = 42;
+einfachParser.TK_EXPR_SINC = 43;
+einfachParser.TK_MULTI = 44;
+einfachParser.TK_PAR_IZQ = 45;
+einfachParser.TK_PAR_DER = 46;
+einfachParser.TK_PUNTO_Y_COMA = 47;
+einfachParser.TK_MENOS_MENOS = 48;
+einfachParser.TK_MENOS = 49;
+einfachParser.TK_SEPARA = 50;
+einfachParser.TK_SUMA_SUMA = 51;
+einfachParser.TK_SUMA = 52;
+einfachParser.TK_DIV = 53;
+einfachParser.TK_PUNTO = 54;
+einfachParser.TK_SWAP = 55;
+einfachParser.TK_TRES_PUNTOS = 56;
+einfachParser.TK_PORCENTAJE = 57;
+einfachParser.TK_AMPERSAND = 58;
+einfachParser.TK_LLAVE_IZQ = 59;
+einfachParser.TK_LLAVE_DER = 60;
+einfachParser.TK_COMILLA = 61;
+einfachParser.HTML_CODE = 62;
+einfachParser.ANY = 63;
+einfachParser.WS = 64;
 
 einfachParser.RULE_einfach_program_mains = 0;
 einfachParser.RULE_einfach_program = 1;
 einfachParser.RULE_einfach_program_main = 2;
 einfachParser.RULE_import_specification = 3;
 einfachParser.RULE_create_specification = 4;
-einfachParser.RULE_insert_specification = 5;
-einfachParser.RULE_insert_type = 6;
-einfachParser.RULE_copy_specification = 7;
-einfachParser.RULE_tag = 8;
-einfachParser.RULE_component = 9;
-einfachParser.RULE_strings = 10;
-einfachParser.RULE_string = 11;
-einfachParser.RULE_attribute = 12;
-einfachParser.RULE_parameters = 13;
-einfachParser.RULE_parameter = 14;
-einfachParser.RULE_parameter_specification = 15;
+einfachParser.RULE_component = 5;
+einfachParser.RULE_parameter_specification = 6;
+einfachParser.RULE_insert_specification = 7;
+einfachParser.RULE_insert_type = 8;
+einfachParser.RULE_copy_specification = 9;
+einfachParser.RULE_tag = 10;
+einfachParser.RULE_strings = 11;
+einfachParser.RULE_string = 12;
+einfachParser.RULE_attribute = 13;
+einfachParser.RULE_parameters = 14;
+einfachParser.RULE_parameter = 15;
 einfachParser.RULE_attribute_type = 16;
 einfachParser.RULE_name_tag = 17;
 einfachParser.RULE_value = 18;
@@ -660,6 +664,198 @@ einfachParser.prototype.create_specification = function() {
 };
 
 
+function ComponentContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = einfachParser.RULE_component;
+    return this;
+}
+
+ComponentContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+ComponentContext.prototype.constructor = ComponentContext;
+
+ComponentContext.prototype.IMAGE = function() {
+    return this.getToken(einfachParser.IMAGE, 0);
+};
+
+ComponentContext.prototype.HERO = function() {
+    return this.getToken(einfachParser.HERO, 0);
+};
+
+ComponentContext.prototype.FOOTER = function() {
+    return this.getToken(einfachParser.FOOTER, 0);
+};
+
+ComponentContext.prototype.HEADER = function() {
+    return this.getToken(einfachParser.HEADER, 0);
+};
+
+ComponentContext.prototype.LINK = function() {
+    return this.getToken(einfachParser.LINK, 0);
+};
+
+ComponentContext.prototype.BUTTON = function() {
+    return this.getToken(einfachParser.BUTTON, 0);
+};
+
+ComponentContext.prototype.PARAGRAPH = function() {
+    return this.getToken(einfachParser.PARAGRAPH, 0);
+};
+
+ComponentContext.prototype.PARAGRAPH_LONG = function() {
+    return this.getToken(einfachParser.PARAGRAPH_LONG, 0);
+};
+
+ComponentContext.prototype.enterRule = function(listener) {
+    if(listener instanceof einfachListener ) {
+        listener.enterComponent(this);
+	}
+};
+
+ComponentContext.prototype.exitRule = function(listener) {
+    if(listener instanceof einfachListener ) {
+        listener.exitComponent(this);
+	}
+};
+
+
+
+
+einfachParser.ComponentContext = ComponentContext;
+
+einfachParser.prototype.component = function() {
+
+    var localctx = new ComponentContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 10, einfachParser.RULE_component);
+    var _la = 0; // Token type
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 74;
+        _la = this._input.LA(1);
+        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << einfachParser.HERO) | (1 << einfachParser.FOOTER) | (1 << einfachParser.HEADER) | (1 << einfachParser.IMAGE) | (1 << einfachParser.BUTTON) | (1 << einfachParser.PARAGRAPH) | (1 << einfachParser.PARAGRAPH_LONG) | (1 << einfachParser.LINK))) !== 0))) {
+        this._errHandler.recoverInline(this);
+        }
+        else {
+        	this._errHandler.reportMatch(this);
+            this.consume();
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+
+function Parameter_specificationContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = einfachParser.RULE_parameter_specification;
+    return this;
+}
+
+Parameter_specificationContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+Parameter_specificationContext.prototype.constructor = Parameter_specificationContext;
+
+Parameter_specificationContext.prototype.URL = function() {
+    return this.getToken(einfachParser.URL, 0);
+};
+
+Parameter_specificationContext.prototype.SIZE = function() {
+    return this.getToken(einfachParser.SIZE, 0);
+};
+
+Parameter_specificationContext.prototype.HERONAME = function() {
+    return this.getToken(einfachParser.HERONAME, 0);
+};
+
+Parameter_specificationContext.prototype.FUNCTION = function() {
+    return this.getToken(einfachParser.FUNCTION, 0);
+};
+
+Parameter_specificationContext.prototype.TEXT = function() {
+    return this.getToken(einfachParser.TEXT, 0);
+};
+
+Parameter_specificationContext.prototype.ALIGNMENT = function() {
+    return this.getToken(einfachParser.ALIGNMENT, 0);
+};
+
+Parameter_specificationContext.prototype.HEROURL = function() {
+    return this.getToken(einfachParser.HEROURL, 0);
+};
+
+Parameter_specificationContext.prototype.COLOR = function() {
+    return this.getToken(einfachParser.COLOR, 0);
+};
+
+Parameter_specificationContext.prototype.enterRule = function(listener) {
+    if(listener instanceof einfachListener ) {
+        listener.enterParameter_specification(this);
+	}
+};
+
+Parameter_specificationContext.prototype.exitRule = function(listener) {
+    if(listener instanceof einfachListener ) {
+        listener.exitParameter_specification(this);
+	}
+};
+
+
+
+
+einfachParser.Parameter_specificationContext = Parameter_specificationContext;
+
+einfachParser.prototype.parameter_specification = function() {
+
+    var localctx = new Parameter_specificationContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 12, einfachParser.RULE_parameter_specification);
+    var _la = 0; // Token type
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 76;
+        _la = this._input.LA(1);
+        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << einfachParser.COLOR) | (1 << einfachParser.URL) | (1 << einfachParser.SIZE) | (1 << einfachParser.TEXT) | (1 << einfachParser.FUNCTION) | (1 << einfachParser.HERONAME) | (1 << einfachParser.HEROURL) | (1 << einfachParser.ALIGNMENT))) !== 0))) {
+        this._errHandler.recoverInline(this);
+        }
+        else {
+        	this._errHandler.reportMatch(this);
+            this.consume();
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+
 function Insert_specificationContext(parser, parent, invokingState) {
 	if(parent===undefined) {
 	    parent = null;
@@ -712,16 +908,16 @@ einfachParser.Insert_specificationContext = Insert_specificationContext;
 einfachParser.prototype.insert_specification = function() {
 
     var localctx = new Insert_specificationContext(this, this._ctx, this.state);
-    this.enterRule(localctx, 10, einfachParser.RULE_insert_specification);
+    this.enterRule(localctx, 14, einfachParser.RULE_insert_specification);
     try {
         this.enterOuterAlt(localctx, 1);
-        this.state = 74;
+        this.state = 78;
         this.match(einfachParser.INSERT);
-        this.state = 75;
+        this.state = 79;
         this.insert_type();
-        this.state = 76;
+        this.state = 80;
         this.match(einfachParser.TK_IGUAL);
-        this.state = 77;
+        this.state = 81;
         this.strings();
     } catch (re) {
     	if(re instanceof antlr4.error.RecognitionException) {
@@ -790,11 +986,11 @@ einfachParser.Insert_typeContext = Insert_typeContext;
 einfachParser.prototype.insert_type = function() {
 
     var localctx = new Insert_typeContext(this, this._ctx, this.state);
-    this.enterRule(localctx, 12, einfachParser.RULE_insert_type);
+    this.enterRule(localctx, 16, einfachParser.RULE_insert_type);
     var _la = 0; // Token type
     try {
         this.enterOuterAlt(localctx, 1);
-        this.state = 79;
+        this.state = 83;
         _la = this._input.LA(1);
         if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << einfachParser.HTML) | (1 << einfachParser.CSS) | (1 << einfachParser.JS) | (1 << einfachParser.LINK))) !== 0))) {
         this._errHandler.recoverInline(this);
@@ -870,16 +1066,16 @@ einfachParser.Copy_specificationContext = Copy_specificationContext;
 einfachParser.prototype.copy_specification = function() {
 
     var localctx = new Copy_specificationContext(this, this._ctx, this.state);
-    this.enterRule(localctx, 14, einfachParser.RULE_copy_specification);
+    this.enterRule(localctx, 18, einfachParser.RULE_copy_specification);
     try {
         this.enterOuterAlt(localctx, 1);
-        this.state = 81;
+        this.state = 85;
         this.match(einfachParser.COPY);
-        this.state = 82;
+        this.state = 86;
         this.tag();
-        this.state = 83;
+        this.state = 87;
         this.match(einfachParser.FROM);
-        this.state = 84;
+        this.state = 88;
         this.url();
     } catch (re) {
     	if(re instanceof antlr4.error.RecognitionException) {
@@ -975,9 +1171,9 @@ einfachParser.TagContext = TagContext;
 einfachParser.prototype.tag = function() {
 
     var localctx = new TagContext(this, this._ctx, this.state);
-    this.enterRule(localctx, 16, einfachParser.RULE_tag);
+    this.enterRule(localctx, 20, einfachParser.RULE_tag);
     try {
-        this.state = 97;
+        this.state = 101;
         this._errHandler.sync(this);
         switch(this._input.LA(1)) {
         case einfachParser.EOF:
@@ -988,118 +1184,30 @@ einfachParser.prototype.tag = function() {
             break;
         case einfachParser.TK_MENORQUE:
             this.enterOuterAlt(localctx, 2);
-            this.state = 87;
-            this.match(einfachParser.TK_MENORQUE);
-            this.state = 88;
-            this.strings();
-            this.state = 89;
-            this.match(einfachParser.TK_MAYORQUE);
-            this.state = 90;
-            this.strings();
             this.state = 91;
             this.match(einfachParser.TK_MENORQUE);
             this.state = 92;
-            this.match(einfachParser.TK_DIV);
-            this.state = 93;
             this.strings();
+            this.state = 93;
+            this.match(einfachParser.TK_MAYORQUE);
             this.state = 94;
+            this.strings();
+            this.state = 95;
+            this.match(einfachParser.TK_MENORQUE);
+            this.state = 96;
+            this.match(einfachParser.TK_DIV);
+            this.state = 97;
+            this.strings();
+            this.state = 98;
             this.match(einfachParser.TK_MAYORQUE);
             break;
         case einfachParser.STRING:
             this.enterOuterAlt(localctx, 3);
-            this.state = 96;
+            this.state = 100;
             this.match(einfachParser.STRING);
             break;
         default:
             throw new antlr4.error.NoViableAltException(this);
-        }
-    } catch (re) {
-    	if(re instanceof antlr4.error.RecognitionException) {
-	        localctx.exception = re;
-	        this._errHandler.reportError(this, re);
-	        this._errHandler.recover(this, re);
-	    } else {
-	    	throw re;
-	    }
-    } finally {
-        this.exitRule();
-    }
-    return localctx;
-};
-
-
-function ComponentContext(parser, parent, invokingState) {
-	if(parent===undefined) {
-	    parent = null;
-	}
-	if(invokingState===undefined || invokingState===null) {
-		invokingState = -1;
-	}
-	antlr4.ParserRuleContext.call(this, parent, invokingState);
-    this.parser = parser;
-    this.ruleIndex = einfachParser.RULE_component;
-    return this;
-}
-
-ComponentContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
-ComponentContext.prototype.constructor = ComponentContext;
-
-ComponentContext.prototype.IMAGE = function() {
-    return this.getToken(einfachParser.IMAGE, 0);
-};
-
-ComponentContext.prototype.HERO = function() {
-    return this.getToken(einfachParser.HERO, 0);
-};
-
-ComponentContext.prototype.FOOTER = function() {
-    return this.getToken(einfachParser.FOOTER, 0);
-};
-
-ComponentContext.prototype.HEADER = function() {
-    return this.getToken(einfachParser.HEADER, 0);
-};
-
-ComponentContext.prototype.LINK = function() {
-    return this.getToken(einfachParser.LINK, 0);
-};
-
-ComponentContext.prototype.BUTTON = function() {
-    return this.getToken(einfachParser.BUTTON, 0);
-};
-
-ComponentContext.prototype.enterRule = function(listener) {
-    if(listener instanceof einfachListener ) {
-        listener.enterComponent(this);
-	}
-};
-
-ComponentContext.prototype.exitRule = function(listener) {
-    if(listener instanceof einfachListener ) {
-        listener.exitComponent(this);
-	}
-};
-
-
-
-
-einfachParser.ComponentContext = ComponentContext;
-
-einfachParser.prototype.component = function() {
-
-    var localctx = new ComponentContext(this, this._ctx, this.state);
-    this.enterRule(localctx, 18, einfachParser.RULE_component);
-    var _la = 0; // Token type
-    try {
-        this.enterOuterAlt(localctx, 1);
-        this.state = 99;
-        _la = this._input.LA(1);
-        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << einfachParser.HERO) | (1 << einfachParser.FOOTER) | (1 << einfachParser.HEADER) | (1 << einfachParser.IMAGE) | (1 << einfachParser.BUTTON) | (1 << einfachParser.LINK))) !== 0))) {
-        this._errHandler.recoverInline(this);
-        }
-        else {
-        	this._errHandler.reportMatch(this);
-            this.consume();
         }
     } catch (re) {
     	if(re instanceof antlr4.error.RecognitionException) {
@@ -1160,12 +1268,12 @@ einfachParser.StringsContext = StringsContext;
 einfachParser.prototype.strings = function() {
 
     var localctx = new StringsContext(this, this._ctx, this.state);
-    this.enterRule(localctx, 20, einfachParser.RULE_strings);
+    this.enterRule(localctx, 22, einfachParser.RULE_strings);
     try {
         this.enterOuterAlt(localctx, 1);
-        this.state = 101;
+        this.state = 103;
         this.match(einfachParser.STRING);
-        this.state = 102;
+        this.state = 104;
         this.string();
     } catch (re) {
     	if(re instanceof antlr4.error.RecognitionException) {
@@ -1226,21 +1334,21 @@ einfachParser.StringContext = StringContext;
 einfachParser.prototype.string = function() {
 
     var localctx = new StringContext(this, this._ctx, this.state);
-    this.enterRule(localctx, 22, einfachParser.RULE_string);
+    this.enterRule(localctx, 24, einfachParser.RULE_string);
     try {
-        this.state = 108;
+        this.state = 110;
         this._errHandler.sync(this);
         switch(this._input.LA(1)) {
         case einfachParser.TK_COMA:
             this.enterOuterAlt(localctx, 1);
-            this.state = 104;
+            this.state = 106;
             this.match(einfachParser.TK_COMA);
-            this.state = 105;
+            this.state = 107;
             this.strings();
             break;
         case einfachParser.STRING:
             this.enterOuterAlt(localctx, 2);
-            this.state = 106;
+            this.state = 108;
             this.strings();
             break;
         case einfachParser.EOF:
@@ -1316,14 +1424,14 @@ einfachParser.AttributeContext = AttributeContext;
 einfachParser.prototype.attribute = function() {
 
     var localctx = new AttributeContext(this, this._ctx, this.state);
-    this.enterRule(localctx, 24, einfachParser.RULE_attribute);
+    this.enterRule(localctx, 26, einfachParser.RULE_attribute);
     try {
         this.enterOuterAlt(localctx, 1);
-        this.state = 110;
-        this.attribute_type();
-        this.state = 111;
-        this.match(einfachParser.TK_DOS_PUNTOS);
         this.state = 112;
+        this.attribute_type();
+        this.state = 113;
+        this.match(einfachParser.TK_DOS_PUNTOS);
+        this.state = 114;
         this.value();
     } catch (re) {
     	if(re instanceof antlr4.error.RecognitionException) {
@@ -1392,24 +1500,27 @@ einfachParser.ParametersContext = ParametersContext;
 einfachParser.prototype.parameters = function() {
 
     var localctx = new ParametersContext(this, this._ctx, this.state);
-    this.enterRule(localctx, 26, einfachParser.RULE_parameters);
+    this.enterRule(localctx, 28, einfachParser.RULE_parameters);
     try {
-        this.state = 120;
+        this.state = 122;
         this._errHandler.sync(this);
         switch(this._input.LA(1)) {
+        case einfachParser.COLOR:
         case einfachParser.URL:
         case einfachParser.SIZE:
         case einfachParser.TEXT:
         case einfachParser.FUNCTION:
         case einfachParser.HERONAME:
+        case einfachParser.HEROURL:
+        case einfachParser.ALIGNMENT:
             this.enterOuterAlt(localctx, 1);
-            this.state = 114;
-            this.parameter_specification();
-            this.state = 115;
-            this.match(einfachParser.TK_IGUAL);
             this.state = 116;
-            this.match(einfachParser.HTML_CODE);
+            this.parameter_specification();
             this.state = 117;
+            this.match(einfachParser.TK_IGUAL);
+            this.state = 118;
+            this.match(einfachParser.HTML_CODE);
+            this.state = 119;
             this.parameter();
             break;
         case einfachParser.TK_LLAVE_DER:
@@ -1478,16 +1589,16 @@ einfachParser.ParameterContext = ParameterContext;
 einfachParser.prototype.parameter = function() {
 
     var localctx = new ParameterContext(this, this._ctx, this.state);
-    this.enterRule(localctx, 28, einfachParser.RULE_parameter);
+    this.enterRule(localctx, 30, einfachParser.RULE_parameter);
     try {
-        this.state = 125;
+        this.state = 127;
         this._errHandler.sync(this);
         switch(this._input.LA(1)) {
         case einfachParser.TK_COMA:
             this.enterOuterAlt(localctx, 1);
-            this.state = 122;
+            this.state = 124;
             this.match(einfachParser.TK_COMA);
-            this.state = 123;
+            this.state = 125;
             this.parameters();
             break;
         case einfachParser.TK_LLAVE_DER:
@@ -1496,90 +1607,6 @@ einfachParser.prototype.parameter = function() {
             break;
         default:
             throw new antlr4.error.NoViableAltException(this);
-        }
-    } catch (re) {
-    	if(re instanceof antlr4.error.RecognitionException) {
-	        localctx.exception = re;
-	        this._errHandler.reportError(this, re);
-	        this._errHandler.recover(this, re);
-	    } else {
-	    	throw re;
-	    }
-    } finally {
-        this.exitRule();
-    }
-    return localctx;
-};
-
-
-function Parameter_specificationContext(parser, parent, invokingState) {
-	if(parent===undefined) {
-	    parent = null;
-	}
-	if(invokingState===undefined || invokingState===null) {
-		invokingState = -1;
-	}
-	antlr4.ParserRuleContext.call(this, parent, invokingState);
-    this.parser = parser;
-    this.ruleIndex = einfachParser.RULE_parameter_specification;
-    return this;
-}
-
-Parameter_specificationContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
-Parameter_specificationContext.prototype.constructor = Parameter_specificationContext;
-
-Parameter_specificationContext.prototype.URL = function() {
-    return this.getToken(einfachParser.URL, 0);
-};
-
-Parameter_specificationContext.prototype.SIZE = function() {
-    return this.getToken(einfachParser.SIZE, 0);
-};
-
-Parameter_specificationContext.prototype.HERONAME = function() {
-    return this.getToken(einfachParser.HERONAME, 0);
-};
-
-Parameter_specificationContext.prototype.FUNCTION = function() {
-    return this.getToken(einfachParser.FUNCTION, 0);
-};
-
-Parameter_specificationContext.prototype.TEXT = function() {
-    return this.getToken(einfachParser.TEXT, 0);
-};
-
-Parameter_specificationContext.prototype.enterRule = function(listener) {
-    if(listener instanceof einfachListener ) {
-        listener.enterParameter_specification(this);
-	}
-};
-
-Parameter_specificationContext.prototype.exitRule = function(listener) {
-    if(listener instanceof einfachListener ) {
-        listener.exitParameter_specification(this);
-	}
-};
-
-
-
-
-einfachParser.Parameter_specificationContext = Parameter_specificationContext;
-
-einfachParser.prototype.parameter_specification = function() {
-
-    var localctx = new Parameter_specificationContext(this, this._ctx, this.state);
-    this.enterRule(localctx, 30, einfachParser.RULE_parameter_specification);
-    var _la = 0; // Token type
-    try {
-        this.enterOuterAlt(localctx, 1);
-        this.state = 127;
-        _la = this._input.LA(1);
-        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << einfachParser.URL) | (1 << einfachParser.SIZE) | (1 << einfachParser.TEXT) | (1 << einfachParser.FUNCTION) | (1 << einfachParser.HERONAME))) !== 0))) {
-        this._errHandler.recoverInline(this);
-        }
-        else {
-        	this._errHandler.reportMatch(this);
-            this.consume();
         }
     } catch (re) {
     	if(re instanceof antlr4.error.RecognitionException) {
