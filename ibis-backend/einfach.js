@@ -51,7 +51,7 @@ function escape_special_characters(input){
       if(apostrophe_found && (input[i] == ',')){
         if(i == input.length) i -= 2
         apostrophe_found = false;
-        for(var j = apostrophe_position; j <= i-1; j++)
+        for(var j = apostrophe_position; j < i-1; j++)
           if(input[j] == '\''
             || input[j] == '\"'
             || input[j] == '\\'){
