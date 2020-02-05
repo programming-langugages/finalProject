@@ -109,7 +109,7 @@ async generatePage(){
         <div class="row">
       `
     }
-    
+
     for(let col of row.cols){
       body += `
           <div class="col-`+ col.size +`">
@@ -144,10 +144,10 @@ async generatePage(){
             justify-content: center;
             align-items: center;
             text-align: center;
-          
+
             /* Text styles */
             text-align: center;
-            
+
             /* Background styles */
             background-size: cover;
             background-position: center center;
@@ -236,9 +236,16 @@ download(strData, strFileName, strMimeType) {
   toast.present();
 }
 
+async presentErrorToast() {
+ const toast = await this.toastController.create({
+   message: 'Tienes un error en la sintaxis, revisa nuevamente',
+   duration: 2000
+ });
+ toast.present();
+}
 
  getTranslation(content):Promise<any>{
-   let url = "http://localhost:1337" 
+   let url = "http://localhost:1337"
    let body = {
      content: content.toString()
    }
@@ -249,9 +256,10 @@ download(strData, strFileName, strMimeType) {
      return Promise.resolve(response.translation)
     })
    .catch((error)=>{
+    this.presentErrorToast();
     console.error("Error in translation", error)
     return Promise.resolve(content) //CUANDO DA ERROR DEVOLVEMOS EL MISMO CONTENT SIN SER TRADUCIDO
    })
  }
- 
+
 }

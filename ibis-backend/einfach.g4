@@ -35,6 +35,11 @@ HEROSUBTITLE: 'heroSubtitle';
 HEROURL: 'herourl';
 HEROIMG: 'heroImg';
 ALIGNMENT: 'alignment';
+CAROUSEL: 'carousel';
+CAROUSELTEXT: 'carouseltext';
+CAROUSELSUBTEXT: 'carouselsubtext';
+CAROUSELSUBSUBTEXT: 'carouselsubsubtext';
+CAROUSELIMAGE: 'carouselimage';
 
 TK_NUM:  [0-9]+;
 STRING: [a-zA-Z0-9]+;
@@ -101,8 +106,9 @@ einfach_program_main :  create_specification | copy_specification | insert_speci
 import_specification: IMPORT import_types;
 
 create_specification: CREATE component TK_IGUAL TK_LLAVE_IZQ parameters TK_LLAVE_DER;
-component : IMAGE | HERO | FOOTER | HEADER | LINK | BUTTON | PARAGRAPH | PARAGRAPH_LONG;
-parameter_specification: URL | SIZE    | ALIGNMENT | HEROURL | COLOR | HEROTITLE | HEROSUBTITLE | FUNCTION | TEXT  | HEROURL | HEROIMG;
+component : IMAGE | HERO | FOOTER | HEADER | LINK | BUTTON | PARAGRAPH | PARAGRAPH_LONG | CAROUSEL;
+parameter_specification: URL | SIZE    | ALIGNMENT | HEROURL | COLOR | HEROTITLE | HEROSUBTITLE |
+FUNCTION | TEXT  | HEROURL | HEROIMG | CAROUSELTEXT | CAROUSELIMAGE |  CAROUSELSUBTEXT | CAROUSELSUBSUBTEXT;
 
 insert_specification: INSERT insert_type TK_IGUAL strings_or_html;
 insert_type: HTML | CSS | JS | LINK;

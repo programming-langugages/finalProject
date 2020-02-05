@@ -6,7 +6,7 @@ var grammarFileName = "einfach.g4";
 
 
 var serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964",
-    "\u0003D\u00a0\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004\t",
+    "\u0003I\u00a0\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004\t",
     "\u0004\u0004\u0005\t\u0005\u0004\u0006\t\u0006\u0004\u0007\t\u0007\u0004",
     "\b\t\b\u0004\t\t\t\u0004\n\t\n\u0004\u000b\t\u000b\u0004\f\t\f\u0004",
     "\r\t\r\u0004\u000e\t\u000e\u0004\u000f\t\u000f\u0004\u0010\t\u0010\u0004",
@@ -31,9 +31,9 @@ var serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964",
     "\u0003\u0019\u0003\u0019\u0003\u0019\u0005\u0019\u009a\n\u0019\u0003",
     "\u001a\u0003\u001a\u0005\u001a\u009e\n\u001a\u0003\u001a\u0002\u0002",
     "\u001b\u0002\u0004\u0006\b\n\f\u000e\u0010\u0012\u0014\u0016\u0018\u001a",
-    "\u001c\u001e \"$&(*,.02\u0002\u0006\u0006\u0002\t\u000b\u000f\u000f",
-    "\u0011\u0011\u0017\u0019\u0006\u0002\f\f\u0010\u0010\u0014\u0014\u001a",
-    " \u0005\u0002\u0006\u0006\r\u000e\u0019\u0019\u0003\u0002\u0012\u0013",
+    "\u001c\u001e \"$&(*,.02\u0002\u0006\u0007\u0002\t\u000b\u000f\u000f",
+    "\u0011\u0011\u0017\u0019!!\u0007\u0002\f\f\u0010\u0010\u0014\u0014\u001a",
+    " \"%\u0005\u0002\u0006\u0006\r\u000e\u0019\u0019\u0003\u0002\u0012\u0013",
     "\u0002\u0095\u00024\u0003\u0002\u0002\u0002\u0004:\u0003\u0002\u0002",
     "\u0002\u0006B\u0003\u0002\u0002\u0002\bD\u0003\u0002\u0002\u0002\nG",
     "\u0003\u0002\u0002\u0002\fN\u0003\u0002\u0002\u0002\u000eP\u0003\u0002",
@@ -47,7 +47,7 @@ var serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964",
     ".\u0093\u0003\u0002\u0002\u00020\u0099\u0003\u0002\u0002\u00022\u009d",
     "\u0003\u0002\u0002\u000245\u0005\u0006\u0004\u000256\u0005\u0004\u0003",
     "\u00026\u0003\u0003\u0002\u0002\u00027;\u0007\u0002\u0002\u000389\u0007",
-    "3\u0002\u00029;\u0005\u0002\u0002\u0002:7\u0003\u0002\u0002\u0002:8",
+    "8\u0002\u00029;\u0005\u0002\u0002\u0002:7\u0003\u0002\u0002\u0002:8",
     "\u0003\u0002\u0002\u0002;\u0005\u0003\u0002\u0002\u0002<C\u0005\n\u0006",
     "\u0002=C\u0005\u0014\u000b\u0002>C\u0005\u0010\t\u0002?C\u0005\u0016",
     "\f\u0002@C\u0005\b\u0005\u0002AC\u00050\u0019\u0002B<\u0003\u0002\u0002",
@@ -55,43 +55,43 @@ var serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964",
     "\u0002\u0002B@\u0003\u0002\u0002\u0002BA\u0003\u0002\u0002\u0002C\u0007",
     "\u0003\u0002\u0002\u0002DE\u0007\u0015\u0002\u0002EF\u0005.\u0018\u0002",
     "F\t\u0003\u0002\u0002\u0002GH\u0007\u0003\u0002\u0002HI\u0005\f\u0007",
-    "\u0002IJ\u0007,\u0002\u0002JK\u0007?\u0002\u0002KL\u0005 \u0011\u0002",
-    "LM\u0007@\u0002\u0002M\u000b\u0003\u0002\u0002\u0002NO\t\u0002\u0002",
+    "\u0002IJ\u00071\u0002\u0002JK\u0007D\u0002\u0002KL\u0005 \u0011\u0002",
+    "LM\u0007E\u0002\u0002M\u000b\u0003\u0002\u0002\u0002NO\t\u0002\u0002",
     "\u0002O\r\u0003\u0002\u0002\u0002PQ\t\u0003\u0002\u0002Q\u000f\u0003",
     "\u0002\u0002\u0002RS\u0007\u0007\u0002\u0002ST\u0005\u0012\n\u0002T",
-    "U\u0007,\u0002\u0002UV\u0005\u0018\r\u0002V\u0011\u0003\u0002\u0002",
+    "U\u00071\u0002\u0002UV\u0005\u0018\r\u0002V\u0011\u0003\u0002\u0002",
     "\u0002WX\t\u0004\u0002\u0002X\u0013\u0003\u0002\u0002\u0002YZ\u0007",
     "\u0004\u0002\u0002Z[\u0005\u0016\f\u0002[\\\u0007\b\u0002\u0002\\]\u0005",
     "*\u0016\u0002]\u0015\u0003\u0002\u0002\u0002^j\u0003\u0002\u0002\u0002",
-    "_`\u0007-\u0002\u0002`a\u0005\u001a\u000e\u0002ab\u0007.\u0002\u0002",
-    "bc\u0005\u001a\u000e\u0002cd\u0007-\u0002\u0002de\u00079\u0002\u0002",
-    "ef\u0005\u001a\u000e\u0002fg\u0007.\u0002\u0002gj\u0003\u0002\u0002",
-    "\u0002hj\u0007\"\u0002\u0002i^\u0003\u0002\u0002\u0002i_\u0003\u0002",
+    "_`\u00072\u0002\u0002`a\u0005\u001a\u000e\u0002ab\u00073\u0002\u0002",
+    "bc\u0005\u001a\u000e\u0002cd\u00072\u0002\u0002de\u0007>\u0002\u0002",
+    "ef\u0005\u001a\u000e\u0002fg\u00073\u0002\u0002gj\u0003\u0002\u0002",
+    "\u0002hj\u0007\'\u0002\u0002i^\u0003\u0002\u0002\u0002i_\u0003\u0002",
     "\u0002\u0002ih\u0003\u0002\u0002\u0002j\u0017\u0003\u0002\u0002\u0002",
-    "kn\u0005\u001a\u000e\u0002ln\u0007B\u0002\u0002mk\u0003\u0002\u0002",
+    "kn\u0005\u001a\u000e\u0002ln\u0007G\u0002\u0002mk\u0003\u0002\u0002",
     "\u0002ml\u0003\u0002\u0002\u0002n\u0019\u0003\u0002\u0002\u0002op\u0007",
-    "\"\u0002\u0002pq\u0005\u001c\u000f\u0002q\u001b\u0003\u0002\u0002\u0002",
-    "rs\u0007\'\u0002\u0002sw\u0005\u001a\u000e\u0002tw\u0005\u001a\u000e",
+    "\'\u0002\u0002pq\u0005\u001c\u000f\u0002q\u001b\u0003\u0002\u0002\u0002",
+    "rs\u0007,\u0002\u0002sw\u0005\u001a\u000e\u0002tw\u0005\u001a\u000e",
     "\u0002uw\u0003\u0002\u0002\u0002vr\u0003\u0002\u0002\u0002vt\u0003\u0002",
     "\u0002\u0002vu\u0003\u0002\u0002\u0002w\u001d\u0003\u0002\u0002\u0002",
-    "xy\u0005$\u0013\u0002yz\u0007#\u0002\u0002z{\u0005(\u0015\u0002{\u001f",
-    "\u0003\u0002\u0002\u0002|}\u0005\u000e\b\u0002}~\u0007,\u0002\u0002",
-    "~\u007f\u0007B\u0002\u0002\u007f\u0080\u0005\"\u0012\u0002\u0080\u0083",
+    "xy\u0005$\u0013\u0002yz\u0007(\u0002\u0002z{\u0005(\u0015\u0002{\u001f",
+    "\u0003\u0002\u0002\u0002|}\u0005\u000e\b\u0002}~\u00071\u0002\u0002",
+    "~\u007f\u0007G\u0002\u0002\u007f\u0080\u0005\"\u0012\u0002\u0080\u0083",
     "\u0003\u0002\u0002\u0002\u0081\u0083\u0003\u0002\u0002\u0002\u0082|",
     "\u0003\u0002\u0002\u0002\u0082\u0081\u0003\u0002\u0002\u0002\u0083!",
-    "\u0003\u0002\u0002\u0002\u0084\u0085\u0007\'\u0002\u0002\u0085\u0088",
+    "\u0003\u0002\u0002\u0002\u0084\u0085\u0007,\u0002\u0002\u0085\u0088",
     "\u0005 \u0011\u0002\u0086\u0088\u0003\u0002\u0002\u0002\u0087\u0084",
     "\u0003\u0002\u0002\u0002\u0087\u0086\u0003\u0002\u0002\u0002\u0088#",
     "\u0003\u0002\u0002\u0002\u0089\u008a\u0007\f\u0002\u0002\u008a%\u0003",
     "\u0002\u0002\u0002\u008b\u008c\u0007\u0005\u0002\u0002\u008c\'\u0003",
-    "\u0002\u0002\u0002\u008d\u008e\u0007\"\u0002\u0002\u008e)\u0003\u0002",
-    "\u0002\u0002\u008f\u0090\u0007\"\u0002\u0002\u0090+\u0003\u0002\u0002",
+    "\u0002\u0002\u0002\u008d\u008e\u0007\'\u0002\u0002\u008e)\u0003\u0002",
+    "\u0002\u0002\u008f\u0090\u0007\'\u0002\u0002\u0090+\u0003\u0002\u0002",
     "\u0002\u0091\u0092\u0005\u001a\u000e\u0002\u0092-\u0003\u0002\u0002",
     "\u0002\u0093\u0094\t\u0005\u0002\u0002\u0094/\u0003\u0002\u0002\u0002",
     "\u0095\u0096\u0007\u0016\u0002\u0002\u0096\u009a\u00052\u001a\u0002",
     "\u0097\u0098\u0007\u0017\u0002\u0002\u0098\u009a\u0005\u001a\u000e\u0002",
     "\u0099\u0095\u0003\u0002\u0002\u0002\u0099\u0097\u0003\u0002\u0002\u0002",
-    "\u009a1\u0003\u0002\u0002\u0002\u009b\u009e\u0007!\u0002\u0002\u009c",
+    "\u009a1\u0003\u0002\u0002\u0002\u009b\u009e\u0007&\u0002\u0002\u009c",
     "\u009e\u0003\u0002\u0002\u0002\u009d\u009b\u0003\u0002\u0002\u0002\u009d",
     "\u009c\u0003\u0002\u0002\u0002\u009e3\u0003\u0002\u0002\u0002\u000b",
     ":Bimv\u0082\u0087\u0099\u009d"].join("");
@@ -108,24 +108,26 @@ var literalNames = [ null, "'create'", "'copy'", "'h1'", null, "'insert'",
                      "'css'", "'js'", "'image'", "'url'", "'button'", "'bootstrap'", 
                      "'icons'", "'size'", "'import'", null, "'p'", "'paragraph'", 
                      "'link'", "'text'", "'function'", "'heroTitle'", "'heroSubtitle'", 
-                     "'herourl'", "'heroImg'", "'alignment'", null, null, 
-                     "':'", "'+:='", "'-:='", "':='", "','", "']'", "'['", 
-                     "'!='", "'->'", "'='", "'<'", "'>'", "'?'", "'*'", 
-                     "'('", "')'", "';'", "'--'", "'-'", "'[]'", "'++'", 
-                     "'+'", "'/'", "'.'", "':=:'", "'...'", "'%'", "'&'", 
-                     "'{'", "'}'", "'''" ];
+                     "'herourl'", "'heroImg'", "'alignment'", "'carousel'", 
+                     "'carouseltext'", "'carouselsubtext'", "'carouselsubsubtext'", 
+                     "'carouselimage'", null, null, "':'", "'+:='", "'-:='", 
+                     "':='", "','", "']'", "'['", "'!='", "'->'", "'='", 
+                     "'<'", "'>'", "'?'", "'*'", "'('", "')'", "';'", "'--'", 
+                     "'-'", "'[]'", "'++'", "'+'", "'/'", "'.'", "':=:'", 
+                     "'...'", "'%'", "'&'", "'{'", "'}'", "'''" ];
 
 var symbolicNames = [ null, "CREATE", "COPY", "H1", "HTML", "INSERT", "FROM", 
                       "HERO", "FOOTER", "HEADER", "COLOR", "CSS", "JS", 
                       "IMAGE", "URL", "BUTTON", "BOOTSTRAP", "ICONS", "SIZE", 
                       "IMPORT", "NEWLINE", "PARAGRAPH", "PARAGRAPH_LONG", 
                       "LINK", "TEXT", "FUNCTION", "HEROTITLE", "HEROSUBTITLE", 
-                      "HEROURL", "HEROIMG", "ALIGNMENT", "TK_NUM", "STRING", 
-                      "TK_DOS_PUNTOS", "TK_SUMA_ASIG", "TK_MENOS_ASIG", 
-                      "TK_ASIG", "TK_COMA", "TK_COR_DER", "TK_COR_IZQ", 
-                      "TK_DISTINTO", "TK_EJECUTA", "TK_IGUAL", "TK_MENORQUE", 
-                      "TK_MAYORQUE", "TK_EXPR_SINC", "TK_MULTI", "TK_PAR_IZQ", 
-                      "TK_PAR_DER", "TK_PUNTO_Y_COMA", "TK_MENOS_MENOS", 
+                      "HEROURL", "HEROIMG", "ALIGNMENT", "CAROUSEL", "CAROUSELTEXT", 
+                      "CAROUSELSUBTEXT", "CAROUSELSUBSUBTEXT", "CAROUSELIMAGE", 
+                      "TK_NUM", "STRING", "TK_DOS_PUNTOS", "TK_SUMA_ASIG", 
+                      "TK_MENOS_ASIG", "TK_ASIG", "TK_COMA", "TK_COR_DER", 
+                      "TK_COR_IZQ", "TK_DISTINTO", "TK_EJECUTA", "TK_IGUAL", 
+                      "TK_MENORQUE", "TK_MAYORQUE", "TK_EXPR_SINC", "TK_MULTI", 
+                      "TK_PAR_IZQ", "TK_PAR_DER", "TK_PUNTO_Y_COMA", "TK_MENOS_MENOS", 
                       "TK_MENOS", "TK_SEPARA", "TK_SUMA_SUMA", "TK_SUMA", 
                       "TK_DIV", "TK_PUNTO", "TK_SWAP", "TK_TRES_PUNTOS", 
                       "TK_PORCENTAJE", "TK_AMPERSAND", "TK_LLAVE_IZQ", "TK_LLAVE_DER", 
@@ -188,42 +190,47 @@ einfachParser.HEROSUBTITLE = 27;
 einfachParser.HEROURL = 28;
 einfachParser.HEROIMG = 29;
 einfachParser.ALIGNMENT = 30;
-einfachParser.TK_NUM = 31;
-einfachParser.STRING = 32;
-einfachParser.TK_DOS_PUNTOS = 33;
-einfachParser.TK_SUMA_ASIG = 34;
-einfachParser.TK_MENOS_ASIG = 35;
-einfachParser.TK_ASIG = 36;
-einfachParser.TK_COMA = 37;
-einfachParser.TK_COR_DER = 38;
-einfachParser.TK_COR_IZQ = 39;
-einfachParser.TK_DISTINTO = 40;
-einfachParser.TK_EJECUTA = 41;
-einfachParser.TK_IGUAL = 42;
-einfachParser.TK_MENORQUE = 43;
-einfachParser.TK_MAYORQUE = 44;
-einfachParser.TK_EXPR_SINC = 45;
-einfachParser.TK_MULTI = 46;
-einfachParser.TK_PAR_IZQ = 47;
-einfachParser.TK_PAR_DER = 48;
-einfachParser.TK_PUNTO_Y_COMA = 49;
-einfachParser.TK_MENOS_MENOS = 50;
-einfachParser.TK_MENOS = 51;
-einfachParser.TK_SEPARA = 52;
-einfachParser.TK_SUMA_SUMA = 53;
-einfachParser.TK_SUMA = 54;
-einfachParser.TK_DIV = 55;
-einfachParser.TK_PUNTO = 56;
-einfachParser.TK_SWAP = 57;
-einfachParser.TK_TRES_PUNTOS = 58;
-einfachParser.TK_PORCENTAJE = 59;
-einfachParser.TK_AMPERSAND = 60;
-einfachParser.TK_LLAVE_IZQ = 61;
-einfachParser.TK_LLAVE_DER = 62;
-einfachParser.TK_COMILLA = 63;
-einfachParser.HTML_CODE = 64;
-einfachParser.ANY = 65;
-einfachParser.WS = 66;
+einfachParser.CAROUSEL = 31;
+einfachParser.CAROUSELTEXT = 32;
+einfachParser.CAROUSELSUBTEXT = 33;
+einfachParser.CAROUSELSUBSUBTEXT = 34;
+einfachParser.CAROUSELIMAGE = 35;
+einfachParser.TK_NUM = 36;
+einfachParser.STRING = 37;
+einfachParser.TK_DOS_PUNTOS = 38;
+einfachParser.TK_SUMA_ASIG = 39;
+einfachParser.TK_MENOS_ASIG = 40;
+einfachParser.TK_ASIG = 41;
+einfachParser.TK_COMA = 42;
+einfachParser.TK_COR_DER = 43;
+einfachParser.TK_COR_IZQ = 44;
+einfachParser.TK_DISTINTO = 45;
+einfachParser.TK_EJECUTA = 46;
+einfachParser.TK_IGUAL = 47;
+einfachParser.TK_MENORQUE = 48;
+einfachParser.TK_MAYORQUE = 49;
+einfachParser.TK_EXPR_SINC = 50;
+einfachParser.TK_MULTI = 51;
+einfachParser.TK_PAR_IZQ = 52;
+einfachParser.TK_PAR_DER = 53;
+einfachParser.TK_PUNTO_Y_COMA = 54;
+einfachParser.TK_MENOS_MENOS = 55;
+einfachParser.TK_MENOS = 56;
+einfachParser.TK_SEPARA = 57;
+einfachParser.TK_SUMA_SUMA = 58;
+einfachParser.TK_SUMA = 59;
+einfachParser.TK_DIV = 60;
+einfachParser.TK_PUNTO = 61;
+einfachParser.TK_SWAP = 62;
+einfachParser.TK_TRES_PUNTOS = 63;
+einfachParser.TK_PORCENTAJE = 64;
+einfachParser.TK_AMPERSAND = 65;
+einfachParser.TK_LLAVE_IZQ = 66;
+einfachParser.TK_LLAVE_DER = 67;
+einfachParser.TK_COMILLA = 68;
+einfachParser.HTML_CODE = 69;
+einfachParser.ANY = 70;
+einfachParser.WS = 71;
 
 einfachParser.RULE_einfach_program_mains = 0;
 einfachParser.RULE_einfach_program = 1;
@@ -722,6 +729,10 @@ ComponentContext.prototype.PARAGRAPH_LONG = function() {
     return this.getToken(einfachParser.PARAGRAPH_LONG, 0);
 };
 
+ComponentContext.prototype.CAROUSEL = function() {
+    return this.getToken(einfachParser.CAROUSEL, 0);
+};
+
 ComponentContext.prototype.enterRule = function(listener) {
     if(listener instanceof einfachListener ) {
         listener.enterComponent(this);
@@ -748,7 +759,7 @@ einfachParser.prototype.component = function() {
         this.enterOuterAlt(localctx, 1);
         this.state = 76;
         _la = this._input.LA(1);
-        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << einfachParser.HERO) | (1 << einfachParser.FOOTER) | (1 << einfachParser.HEADER) | (1 << einfachParser.IMAGE) | (1 << einfachParser.BUTTON) | (1 << einfachParser.PARAGRAPH) | (1 << einfachParser.PARAGRAPH_LONG) | (1 << einfachParser.LINK))) !== 0))) {
+        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << einfachParser.HERO) | (1 << einfachParser.FOOTER) | (1 << einfachParser.HEADER) | (1 << einfachParser.IMAGE) | (1 << einfachParser.BUTTON) | (1 << einfachParser.PARAGRAPH) | (1 << einfachParser.PARAGRAPH_LONG) | (1 << einfachParser.LINK) | (1 << einfachParser.CAROUSEL))) !== 0))) {
         this._errHandler.recoverInline(this);
         }
         else {
@@ -826,6 +837,22 @@ Parameter_specificationContext.prototype.HEROIMG = function() {
     return this.getToken(einfachParser.HEROIMG, 0);
 };
 
+Parameter_specificationContext.prototype.CAROUSELTEXT = function() {
+    return this.getToken(einfachParser.CAROUSELTEXT, 0);
+};
+
+Parameter_specificationContext.prototype.CAROUSELIMAGE = function() {
+    return this.getToken(einfachParser.CAROUSELIMAGE, 0);
+};
+
+Parameter_specificationContext.prototype.CAROUSELSUBTEXT = function() {
+    return this.getToken(einfachParser.CAROUSELSUBTEXT, 0);
+};
+
+Parameter_specificationContext.prototype.CAROUSELSUBSUBTEXT = function() {
+    return this.getToken(einfachParser.CAROUSELSUBSUBTEXT, 0);
+};
+
 Parameter_specificationContext.prototype.enterRule = function(listener) {
     if(listener instanceof einfachListener ) {
         listener.enterParameter_specification(this);
@@ -852,7 +879,7 @@ einfachParser.prototype.parameter_specification = function() {
         this.enterOuterAlt(localctx, 1);
         this.state = 78;
         _la = this._input.LA(1);
-        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << einfachParser.COLOR) | (1 << einfachParser.URL) | (1 << einfachParser.SIZE) | (1 << einfachParser.TEXT) | (1 << einfachParser.FUNCTION) | (1 << einfachParser.HEROTITLE) | (1 << einfachParser.HEROSUBTITLE) | (1 << einfachParser.HEROURL) | (1 << einfachParser.HEROIMG) | (1 << einfachParser.ALIGNMENT))) !== 0))) {
+        if(!(((((_la - 10)) & ~0x1f) == 0 && ((1 << (_la - 10)) & ((1 << (einfachParser.COLOR - 10)) | (1 << (einfachParser.URL - 10)) | (1 << (einfachParser.SIZE - 10)) | (1 << (einfachParser.TEXT - 10)) | (1 << (einfachParser.FUNCTION - 10)) | (1 << (einfachParser.HEROTITLE - 10)) | (1 << (einfachParser.HEROSUBTITLE - 10)) | (1 << (einfachParser.HEROURL - 10)) | (1 << (einfachParser.HEROIMG - 10)) | (1 << (einfachParser.ALIGNMENT - 10)) | (1 << (einfachParser.CAROUSELTEXT - 10)) | (1 << (einfachParser.CAROUSELSUBTEXT - 10)) | (1 << (einfachParser.CAROUSELSUBSUBTEXT - 10)) | (1 << (einfachParser.CAROUSELIMAGE - 10)))) !== 0))) {
         this._errHandler.recoverInline(this);
         }
         else {
@@ -1610,6 +1637,10 @@ einfachParser.prototype.parameters = function() {
         case einfachParser.HEROURL:
         case einfachParser.HEROIMG:
         case einfachParser.ALIGNMENT:
+        case einfachParser.CAROUSELTEXT:
+        case einfachParser.CAROUSELSUBTEXT:
+        case einfachParser.CAROUSELSUBSUBTEXT:
+        case einfachParser.CAROUSELIMAGE:
             this.enterOuterAlt(localctx, 1);
             this.state = 122;
             this.parameter_specification();

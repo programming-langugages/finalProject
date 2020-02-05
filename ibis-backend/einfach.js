@@ -30,92 +30,106 @@ String.prototype.replaceAt=function(index, replacement) {
     return this.substr(0, index) + replacement+ this.substr(index + replacement.length);
 }
 
-function escape_special_characters(input){
-    var apostrophe_found = false;
-    for(var i = 0; i <= input.length; i++){
-
-      if(input[i] == '\'' && !apostrophe_found){
-        apostrophe_position = i + 1;
-        apostrophe_found = true;
-      }
+function findLastApostrophe(input){
+  for (var i = input.length - 1 ; i >= 0; i--) {
+    if(input[i] == '\"') return i;
+  }
+  return -1;
+}
 
 
-      if(!apostrophe_found && input[i] == '\'' && input[i+1] == '}' && input[i+2] == ";"){
-        apostrophe_position = i;
-        apostrophe_found = true;
-      }
+function replaceNthRegex(input, replaceString, regex, nth) {
+  var temp_matched;
+
+  // while( nth > 0){
+  //   temp_matched = regex.exec(input)
+  //   nth -= 1
+  // }
+  var matched = regex.exec(input)
+  console.log(matched)
+  //if(nth == 3) console.log(regex.exec(input))
+  //Taking out the escaping from the first and the last apostrophe
+  console.log("Nth " + nth + " matched " + matched)
+  replaceString = replaceString.slice(0, 0) + replaceString.slice(1);
+  replaceString = replaceString.replaceAt(0, "\'")
+  // The escaping character is one before the lastApostrophe and the slice needs the position n+1 to remove that character
+  var lastApostrophe = findLastApostrophe(replaceString)
+
+  replaceString = replaceString.replaceAt(lastApostrophe, "\'")
+  replaceString = replaceString.slice(0, lastApostrophe - 1) + replaceString.slice(lastApostrophe - 1 + 1);
 
 
-      if(!apostrophe_found && input[i] == '\'' && input[i+1] == '}' && input[i+2] == "\""){
-        apostrophe_position = i;
-        apostrophe_found = true;
-      }
 
 
-      if(!apostrophe_found && input[i] == '\'' && input[i+1] == '}'){
-        apostrophe_position = i;
-        apostrophe_found = true;
-      }
+
+  var subStringToReplace = input.substring(matched.index, matched.index + matched[0].length)
+  //console.log("input " + input)
+    console.log("Where is my colon " + subStringToReplace + "----> " + replaceString)
+  input = input.replace(subStringToReplace, replaceString);
+    //console.log("input " + input)
+  return input;
+
+}
+
+function escape_special_characters(input) {
 
 
-      if(!apostrophe_found && input[i] == '\'' && input[i+1] == '\"'){
-        apostrophe_position = i;
-        apostrophe_found = true;
-      }
-      if(apostrophe_found && i == input.length){
+  //
+  // var s = 'abcjkjokabckjk'
+  // search = 'abc'
+  // var n = 2
+  // s.replace(RegExp("^(?:.*?abc){" + n + "}"), function(x){return x.replace(RegExp(search + "$"), "HHHH")})
 
-        apostrophe_found = false;
-        for(var j = apostrophe_position; j <= i; j++)
-          if(input[j] == '\''
-            || input[j] == '\"'
-            || input[j] == '\\'
-            ){
-              //Replacing for "
-              input = input.replaceAt(j, "\"");
-              //Escaping the character
-              input = input.splice(j, 0, "\\");
-              j++;
-          }else if(input[j] == '='){
-                    input = input.splice(j, 0, "\\");
-                    j++;
-          }
-      }
+    //IF ANYTHING GOES WRONG WITH THE INPUT REVIEW THIS
+    var classParameters = /\'(.)*?\'[ \t]*(}|,|"|;|$)/g
+    var matchedParameters =  input.match(classParameters);
+    //var matchedParameters =  Array.from(input.match(classParameters));
 
-      if(apostrophe_found && (input[i] == ',' || input[i] == '}' || input[i] == ';')){
-        if(i == input.length) i -= 2
-        apostrophe_found = false;
-        for(var j = apostrophe_position; j < i-1; j++)
-          if(input[j] == '\''
-            || input[j] == '\"'
-            || input[j] == '\\'){
-              //Replacing for "
-              input = input.replaceAt(j, "\"");
-              //Escaping the character
-              input = input.splice(j, 0, "\\");
-              j++;
-          }
-        if(i == input.length) i += 2
-      }
+    if(!matchedParameters) return input;
+
+    console.log(matchedParameters)
+    for (var i = 0; i < matchedParameters.length; i++) {
+
+      for (var j = 0; j < matchedParameters[i].length; j++){
+
+
+        if (matchedParameters[i][j] == '\'' ||
+            matchedParameters[i][j] == '\"'
+        ) {
+
+            //Replacing for "
+            matchedParameters[i] = matchedParameters[i].replaceAt(j, "\"");
+            //Escaping the character
+            var backslash = "\\";
+            matchedParameters[i] = matchedParameters[i].splice(j, 0, backslash);
+
+            //matchedParameters[i] = matchedParameters[i].slice(0,j) + `\\` + matchedParameters[i].slice(j);
+
+            j++;
+        } else if (matchedParameters[i][j] == '='
+                  ) {
+            matchedParameters[i] = matchedParameters[i].splice(j, 0, '\\');
+            j++;
+        }
+
     }
 
-    input = input.replace(/(?:\r\n|\r|\n)/g, '');
+  }
 
-    if(input[input.length - 2] == "\"" && input[input.length - 3] == "\\")
-      input = input.substring(0, input.length - 3) + "\"}";
-      if(input[input.length - 1] == "\"" && input[input.length - 2] == "\\")
-        input = input.substring(0, input.length - 2) + "\'";
+for (var i = 0; i < matchedParameters.length; i++) {
+    input = replaceNthRegex(input, matchedParameters[i], classParameters, i)
+}
 
-    if(input[input.length - 1] != '\'') console.log("vida " + input[input.length - 1])
     return input;
 }
 
-function invert_and_format_response(array_of_translations){
-  var final_response = ""
-  array_of_translations.reverse();
-  for(var i = 0; i < array_of_translations.length; i++){
-    final_response += array_of_translations[i];
-  }
-  return final_response;
+function invert_and_format_response(array_of_translations) {
+    var final_response = ""
+    array_of_translations.reverse();
+    for (var i = 0; i < array_of_translations.length; i++) {
+        final_response += array_of_translations[i];
+    }
+    return final_response;
 }
 let fs = require('fs');
 const qs = require('querystring');
@@ -146,15 +160,16 @@ http.createServer((req, res) => {
 
 
      //const data = qs.parse(chunk.toString());
-    var data = JSON.parse(escape_special_characters(chunk.toString()));
+     console.log(chunk.toString())
+    var data = JSON.parse(chunk.toString());
 
 
     var input = data.content;
 
     input = escape_special_characters(input)
-    console.log("///// Translating this /////////////////////////////")
+    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Translating this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     console.log(input)
-    console.log("///// Translating this ////////////////////////////")
+    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Translating this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     //create button = { function='alert(\"Ibis!\")', text='Button uwu'}
 
 

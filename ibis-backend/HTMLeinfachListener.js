@@ -88,6 +88,32 @@ function fixRegexes(classRegex, stringToClean, classToWrite){
     return {first: stringsWithRegex, second: stringToClean}
 }
 
+
+function fixCarousel(attributes){
+    var classCarouselText = /%carouseltext(.)+?%/g;
+    var classCarouselSubText = /%carouselsubtext(.)+?%/g;
+    var classCarouselSubSubText = /%carouselsubsubtext(.)+?%/g;
+    var classCarouselTextToReplace = /%carouseltext%/;
+    var classCarouselSubTextToReplace = /%carouselsubtext%/;
+    var classCarouselSubSubTextToReplace = /%carouselsubsubtext%/;
+    var carouselTexts = attributes.match(classCarouselText)
+    var carouselSubTexts = attributes.match(classCarouselSubText)
+    var carouselSubSubTexts = attributes.match(classCarouselSubSubText)
+
+    if(carouselTexts)
+      for(var i = 0; i < carouselTexts.length; i++)
+        attributes = attributes.replace(classCarouselTextToReplace, carouselTexts[i].replace(/%/g, '').replace(/carouseltext/g, ''))
+    if(carouselSubTexts)
+      for(var i = 0; i < carouselSubTexts.length; i++)
+        attributes = attributes.replace(classCarouselSubTextToReplace, carouselSubTexts[i].replace(/%/g, '').replace(/carouselsubtext/g, ''))
+    if(carouselSubSubTexts)
+      for(var i = 0; i < carouselSubSubTexts.length; i++)
+        attributes = attributes.replace(classCarouselSubSubTextToReplace, carouselSubSubTexts[i].replace(/%/g, '').replace(/carouselsubsubtext/g, ''))
+    //Getting rid of the texts that have been not replaced.
+    attributes = attributes.replace( /%carouseltext%/g, '').replace( /%carouselsubtext%/g, '').replace( /%carouselsubsubtext%/g, '')
+    return attributes;
+}
+
 HTMLeinfachListener.prototype.constructor = HTMLeinfachListener;
 
 
@@ -147,17 +173,18 @@ HTMLeinfachListener.prototype.enterInsert_specification = function(ctx) {
 // Exit a parse tree produced by einfachParser#insert_specification.
 HTMLeinfachListener.prototype.exitInsert_specification = function(ctx) {
 
+
   // Look which specification it is about
   switch(getTranslationOrText(ctx,1)){
     case "html":
-
-      ctx.text = getTranslationOrText(ctx,3).replace(/\'/g, '');
+      ctx.text = getTranslationOrText(ctx,3).replace(/(\'|\\)/g, '');
       break;
     case "css":
       ctx.text = "<style> " + getTranslationOrText(ctx,3).replace(/\'/g, '') + " </style>"
       break;
     case "js":
-      ctx.text = "<script> " + getTranslationOrText(ctx,3).replace(/\'/g, '') + " </script>"
+      ctx.text = "<script> " + getTranslationOrText(ctx,3).replace(/\'/g, '')  + "' </script>"
+      ctx.text = ctx.text.replace(/\)\'/,')')
       break;
   }
 
@@ -171,7 +198,28 @@ HTMLeinfachListener.prototype.enterCreate_specification = function(ctx) {
 
 // Exit a parse tree produced by einfachParser#create_specification.
 HTMLeinfachListener.prototype.exitCreate_specification = function(ctx) {
-
+    var id_carousel_random = (parseInt(Math.random() * (100000))).toString()
+    var carousel_part_1 = `<div id="carouselExampleIndicators` + id_carousel_random + `" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">`
+    // var carousel_indicators = `
+    //   <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    //   <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    //   <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    //
+    // `
+    var carousel_part_2 = ` </ol>
+        <div class="carousel-inner">
+        `
+    var carousel_part_3 =`</div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators` + id_carousel_random + `" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators` + id_carousel_random + `" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>`
   var translation;
   var attributes = getTranslationOrText(ctx,4);
   var component = getTranslationOrText(ctx,1);
@@ -213,9 +261,22 @@ HTMLeinfachListener.prototype.exitCreate_specification = function(ctx) {
     //create paragraph = {size: '15'. color: '#ffff', text:"bla bla bla"}
     //<p style="font-size:15px; color: #fff">bla bla bla</p>
     case "paragraph":
+      console.log("antlr" + attributes)
       var styleRegex = /style=(?<!\\)'[a-zA-Z0-9:\-#\s(\\')]*(?<!\\)'/g
       var information_fixed = fixRegexes(styleRegex, attributes, "style")
+      console.log("brayan uwuwuwuwuwuw" + information_fixed.first)
       translation = "<p " + information_fixed.first + information_fixed.second + "</p>"
+      break;
+    case "carousel":
+    console.log(attributes)
+      var number_of_carousels = attributes.match(/carousel-item/g || []).length
+      attributes = attributes.replace('carousel-item', 'carousel-item active');
+      var carousel_indicators = ""
+      for(var i = 0; i < number_of_carousels; i++)
+        if(i == 0) carousel_indicators += `<li data-target="#carouselExampleIndicators` + id_carousel_random + `" data-slide-to="0" class="active"></li>`
+        else carousel_indicators += `<li data-target="#carouselExampleIndicators` + id_carousel_random + `" data-slide-to="` + i.toString() + `" ></li>`
+      translation = carousel_part_1 + carousel_indicators + carousel_part_2 + attributes + carousel_part_3
+      break;
   }
   ctx.text = translation;
 
@@ -236,6 +297,7 @@ HTMLeinfachListener.prototype.exitParameters = function(ctx) {
   var translation;
 
 
+
   console.log("type parameter", type_parameter)
   console.log("type information_parameter", information_parameter)
   switch(type_parameter){
@@ -252,6 +314,7 @@ HTMLeinfachListener.prototype.exitParameters = function(ctx) {
       translation = "style\=\'color:" + information_parameter + "' ";
       break;
     case "text":
+      console.log("lizzy" + information_parameter);
       translation = ">" + information_parameter  ;
       break;
     case "heroTitle":
@@ -259,7 +322,7 @@ HTMLeinfachListener.prototype.exitParameters = function(ctx) {
       break;
     case "heroSubtitle":
       translation = "<h3> " + information_parameter + "</h3>\n"
-    break;
+      break;
     case "herourl":
       translation = "<a href\='" + information_parameter + "' class\='btn btn-primary btn-lg' role\='button' target\='_blank'>¡Más información!</a>\n";
       break;
@@ -272,11 +335,29 @@ HTMLeinfachListener.prototype.exitParameters = function(ctx) {
     case "heroImg":
       translation = "style\='background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url("+ information_parameter +");'";
       break;
-    default:
-      translation = information_parameter;
+    case "carouselimage":
+    var carousel_item =`<div class="carousel-item">
+      <img class="d-block w-100" src="` + information_parameter + `" alt="%carouselsubsubtext%">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>%carouseltext%</h5>
+        <p>%carouselsubtext%</p>
+      </div>
+    </div>`
+    console.log(carousel_item)
+      translation = carousel_item;
+      break;
+    case "carouseltext":
+      translation = "%carouseltext" + information_parameter + "%";
+      break;
+    case "carouselsubtext":
+      translation = "%carouselsubtext" + information_parameter + "%";
+      break;
+    case "carouselsubsubtext":
+      translation = "%carouselsubsubtext" + information_parameter + "%";
       break;
 
   }
+
   translation +=  getTranslationOrText(ctx,3)
   ctx.text = translation;
 };
