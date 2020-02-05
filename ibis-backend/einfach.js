@@ -46,10 +46,10 @@ function replaceNthRegex(input, replaceString, regex, nth) {
   //   nth -= 1
   // }
   var matched = regex.exec(input)
-  console.log(matched)
+
   //if(nth == 3) console.log(regex.exec(input))
   //Taking out the escaping from the first and the last apostrophe
-  console.log("Nth " + nth + " matched " + matched)
+
   replaceString = replaceString.slice(0, 0) + replaceString.slice(1);
   replaceString = replaceString.replaceAt(0, "\'")
   // The escaping character is one before the lastApostrophe and the slice needs the position n+1 to remove that character
@@ -64,7 +64,13 @@ function replaceNthRegex(input, replaceString, regex, nth) {
 
   var subStringToReplace = input.substring(matched.index, matched.index + matched[0].length)
   //console.log("input " + input)
-    console.log("Where is my colon " + subStringToReplace + "----> " + replaceString)
+  // This is a machetazo in the input
+  // create button = { function='alert(test)',text='Button uwu'}; create button = { function='alert('Lizzy')',text='Button uwu'}
+  // Because the last execution of   var matched = regex.exec(input) is incorrect and retuns text='something' instead of 'something'
+  // Uncomment the next line to appreciate that
+  // console.log("Where is my colon " + subStringToReplace + "----> " + replaceString)
+  if(subStringToReplace.match(/(.)*text='/) != null)
+    subStringToReplace = subStringToReplace.replace(/(.)*text=/g, '')
   input = input.replace(subStringToReplace, replaceString);
     //console.log("input " + input)
   return input;
@@ -81,13 +87,13 @@ function escape_special_characters(input) {
   // s.replace(RegExp("^(?:.*?abc){" + n + "}"), function(x){return x.replace(RegExp(search + "$"), "HHHH")})
 
     //IF ANYTHING GOES WRONG WITH THE INPUT REVIEW THIS
-    var classParameters = /\'(.)*?\'[ \t]*(}|,|"|;|$)/g
+    var classParameters = /\'(.)*?\'[ \t]*(}|,|"|;|$)/gms
     var matchedParameters =  input.match(classParameters);
     //var matchedParameters =  Array.from(input.match(classParameters));
 
     if(!matchedParameters) return input;
 
-    console.log(matchedParameters)
+
     for (var i = 0; i < matchedParameters.length; i++) {
 
       for (var j = 0; j < matchedParameters[i].length; j++){
