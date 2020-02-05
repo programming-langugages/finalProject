@@ -130,7 +130,9 @@ HTMLeinfachListener.prototype.exitEinfach_program_mains = function(ctx) {
   var text = getTextOfChildrenModified(ctx);
 
   text += "\n"
+  if(text.match(/<script>|<button/g) == null)
   text = text.replace(/\"/g, "\'");
+  text = text.replace(/\\=/g, '');
   text = text.replace(/\\n/g, "\\\\n")
   text = text.replace(/(?:\r\n|\r|\n)/g, '\\n');
   this.text_json.push(text.toString())
@@ -183,8 +185,8 @@ HTMLeinfachListener.prototype.exitInsert_specification = function(ctx) {
       ctx.text = "<style> " + getTranslationOrText(ctx,3).replace(/\'/g, '') + " </style>"
       break;
     case "js":
-      ctx.text = "<script> " + getTranslationOrText(ctx,3).replace(/\'/g, '')  + "' </script>"
-      ctx.text = ctx.text.replace(/\)\'/,')')
+      ctx.text = "<script> " + getTranslationOrText(ctx,3).replace(/\'/g, '')  + " </script>"
+      //ctx.text = ctx.text.replace(/\)\'/,')')
       break;
   }
 
@@ -311,7 +313,7 @@ HTMLeinfachListener.prototype.exitParameters = function(ctx) {
       translation = "style\=" + getWidthAndHeight(information_parameter) + "' ";
       break;
     case "color":
-      translation = "style\=\'color:" + information_parameter + "' ";
+      translation = "style\='color:" + information_parameter + "' ";
       break;
     case "text":
       console.log("lizzy" + information_parameter);
